@@ -1,0 +1,17 @@
+.settings_page_tab-return-notifier #wpcontent, .settings_page_tab-return-notifier.auto-fold #wpcontent {
+    padding-left: 0;
+}
+
+.settings_page_tab-return-notifier .form-table label, .settings_page_tab-return-notifier .form-table p {
+    font-size: 13px;
+}
+
+.settings_page_tab-return-notifier .site-health-accordion-actions p.submit {
+    display: block;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}
+.settings_page_tab-return-notifier .form-table th{
+    width: 100px;
+}
