@@ -15,4 +15,21 @@ module.exports = {
 			'index.js'
 		),
 	},
+	optimization: {
+		...defaultConfig.optimization,
+		splitChunks: {
+			...defaultConfig.optimization.splitChunks,
+			cacheGroups: {
+				...defaultConfig.optimization.splitChunks.cacheGroups,
+				vendors: false,
+				sharedGlobal: {
+					name: 'tab-return-notifier-shared',
+					chunks: 'all',
+					minChunks: 2,
+					enforce: true,
+					test: /[\\/]includes[\\/]js[\\/]/,
+				},
+			},
+		},
+	},
 };

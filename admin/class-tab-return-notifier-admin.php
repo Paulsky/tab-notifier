@@ -102,15 +102,21 @@ class Tab_Return_Notifier_Admin {
 			wp_enqueue_script(
 				$admin_handle,
 				plugin_dir_url( dirname( __FILE__ ) ) . 'build/tab-return-notifier-admin.js',
-				array_merge($script_asset['dependencies'], ['jquery-ui-sortable']),
+				array_merge($script_asset['dependencies'], ['tab-return-notifier-shared', 'jquery-ui-sortable']),
 				$script_asset['version']
 			);
+
+			$messages = $this->get_messages_for_preview();
+			$options  = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
 
 			wp_localize_script(
 				$admin_handle,
 				'trnData',
 				array(
 					'variables' => Tab_Return_Notifier_Variables::get_variables(),
+					'animation'      => $options['general']['animation'],
+					'speed'          => $options['general']['speed'],
+					'messages'       => $messages,
 				)
 			);
 		}
@@ -225,7 +231,7 @@ class Tab_Return_Notifier_Admin {
 	 * @since    1.0.0
 	 */
 	public function display_settings_page() {
-		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
+		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'settings';
 		$options    = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
 		$post_types = $this->get_public_post_types( 'objects' );
 		$taxonomies = $this->get_public_taxonomies( 'objects' );
@@ -245,5 +251,13 @@ class Tab_Return_Notifier_Admin {
 		}
 
 		$this->admin_view->render_settings_page( $active_tab, $options, $post_types, $taxonomies );
+	}
+
+	private function get_messages_for_preview() {
+		$options = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
+
+		$templates = $options['general']['messages'];
+
+		return $templates;
 	}
 }

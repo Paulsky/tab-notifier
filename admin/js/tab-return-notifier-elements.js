@@ -420,14 +420,13 @@ import 'emoji-picker-element';
 	$( function () {
 		TrnElements.init();
 
-
-		jQuery(document).ready(function($) {
-			$('.trn-messages-container').sortable({
+		$( document ).ready( function () {
+			$( '.trn-messages-container' ).sortable( {
 				items: '> .trn-message-input-group',
 				handle: '.trn-drag-handle',
 				axis: 'y',
-			});
-		});
+			} );
+		} );
 
 		// Add new message field
 		$( '.trn-messages-container' ).on(

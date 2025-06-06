@@ -76,6 +76,7 @@ class Tab_Return_Notifier {
 
 		$this->load_dependencies();
 		$this->set_locale();
+		$this->define_shared_hooks();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -121,6 +122,10 @@ class Tab_Return_Notifier {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/trait-tab-return-notifier-helper.php';
 
+		/**
+		 * The class responsible for shared functions
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tab-return-notifier-shared.php';
 
 		/**
 		 * The class responsible for rendering the admin html.
@@ -161,6 +166,18 @@ class Tab_Return_Notifier {
 	}
 
 	/**
+	 * Register all of the hooks related to both the admin and the public area functionality
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_shared_hooks() {
+		$plugin_shared = new Tab_Return_Notifier_Shared( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'init', $plugin_shared, 'enqueue_scripts' );
+	}
+
+	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
@@ -189,7 +206,6 @@ class Tab_Return_Notifier {
 
 		$plugin_public = new Tab_Return_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		//AJAX Requests

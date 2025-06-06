@@ -68,18 +68,6 @@ class Tab_Return_Notifier_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-
-		if ( $this->is_enabled_for_current_view() ) {
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tab-return-notifier-public.css', array(), $this->version, 'all' );
-		}
-	}
-
-	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
@@ -92,7 +80,7 @@ class Tab_Return_Notifier_Public {
 			wp_enqueue_script(
 				$public_handle,
 				plugin_dir_url( dirname( __FILE__ ) ) . 'build/tab-return-notifier-public.js',
-				$script_asset['dependencies'],
+				array_merge($script_asset['dependencies'], ['tab-return-notifier-shared']),
 				$script_asset['version']
 			);
 
@@ -200,7 +188,7 @@ class Tab_Return_Notifier_Public {
 	 * AJAX request
 	 * Render the shortcode by AJAX request
 	 *
-	 * @since 1.5.3
+	 * @since 1.0.0
 	 */
 	public function get_messages_action() {
 		if ( ! isset( $_POST['nonce'] ) ) {

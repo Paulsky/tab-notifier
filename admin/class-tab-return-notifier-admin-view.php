@@ -30,13 +30,13 @@ class Tab_Return_Notifier_Admin_View {
 
             <nav class="health-check-tabs-wrapper hide-if-no-js tab-count-2"
                  aria-label="<?php esc_attr_e( 'Secondary menu', 'tab-return-notifier' ); ?>">
-                <a href="<?php echo esc_url( add_query_arg( 'tab', 'general' ) ); ?>"
-                   class="health-check-tab <?php echo $active_tab === 'general' ? 'active' : ''; ?>">
-					<?php esc_html_e( 'General', 'tab-return-notifier' ); ?>
+                <a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"
+                   class="health-check-tab <?php echo $active_tab === 'settings' ? 'active' : ''; ?>">
+					<?php esc_html_e( 'Settings', 'tab-return-notifier' ); ?>
                 </a>
-                <a href="<?php echo esc_url( add_query_arg( 'tab', 'logging' ) ); ?>"
-                   class="health-check-tab <?php echo $active_tab === 'logging' ? 'active' : ''; ?>">
-					<?php esc_html_e( 'Logging', 'tab-return-notifier' ); ?>
+                <a href="<?php echo esc_url( add_query_arg( 'tab', 'preview' ) ); ?>"
+                   class="health-check-tab <?php echo $active_tab === 'preview' ? 'active' : ''; ?>">
+					<?php esc_html_e( 'Preview', 'tab-return-notifier' ); ?>
                 </a>
             </nav>
         </div>
@@ -50,10 +50,10 @@ class Tab_Return_Notifier_Admin_View {
 				<?php settings_fields( 'tab_return_notifier_settings' ); ?>
 				<?php wp_nonce_field( 'tab_return_notifier_settings' ); ?>
 
-				<?php if ( $active_tab === 'general' ) : ?>
-					<?php $this->render_general_tab( $options, $post_types, $taxonomies ); ?>
-				<?php elseif ( $active_tab === 'logging' ) : ?>
-					<?php $this->render_logging_tab(); ?>
+				<?php if ( $active_tab === 'settings' ) : ?>
+					<?php $this->render_settings_tab( $options, $post_types, $taxonomies ); ?>
+				<?php elseif ( $active_tab === 'preview' ) : ?>
+					<?php $this->render_preview_tab(); ?>
 				<?php endif; ?>
             </form>
         </div>
@@ -61,7 +61,7 @@ class Tab_Return_Notifier_Admin_View {
 	}
 
 	/**
-	 * Render the general tab content.
+	 * Render the settings tab content.
 	 *
 	 * @param array $options Plugin options array.
 	 * @param array $post_types Available post types.
@@ -69,9 +69,9 @@ class Tab_Return_Notifier_Admin_View {
 	 *
 	 * @since      1.0.0
 	 */
-	protected function render_general_tab( array $options, array $post_types, array $taxonomies ): void {
+	protected function render_settings_tab( array $options, array $post_types, array $taxonomies ): void {
 		?>
-        <h2><?php esc_html_e( 'General Settings', 'tab-return-notifier' ); ?></h2>
+        <h2><?php esc_html_e( 'Settings', 'tab-return-notifier' ); ?></h2>
         <p><?php esc_html_e( 'Configure the tab return notification settings.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
@@ -102,7 +102,7 @@ class Tab_Return_Notifier_Admin_View {
 				           '</table>';
 				echo $this->render_accordion_item(
 					'general',
-					__( 'General', 'tab-return-notifier' ),
+					__( 'Settings', 'tab-return-notifier' ),
 					$content,
 					true
 				);
@@ -197,17 +197,20 @@ class Tab_Return_Notifier_Admin_View {
 	}
 
 	/**
-	 * Render the logging tab content.
+	 * Render the preview tab content.
 	 * @since      1.0.0
 	 */
-	protected function render_logging_tab(): void {
+	protected function render_preview_tab(): void {
 		?>
-        <h2><?php esc_html_e( 'Logging', 'tab-return-notifier' ); ?></h2>
-        <p><?php esc_html_e( 'View tab return notifications history.', 'tab-return-notifier' ); ?></p>
+        <h2><?php esc_html_e( 'Preview', 'tab-return-notifier' ); ?></h2>
+        <p><?php esc_html_e( 'Please see the preview below. Note that only the general messages are displayed, and all variables are placeholder data.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
-            <h3 class="site-health-issue-count-title"><?php esc_html_e( 'Recent Activity', 'tab-return-notifier' ); ?></h3>
-            <p><?php esc_html_e( 'No log entries found.', 'tab-return-notifier' ); ?></p>
+            <div class="trn-tab-preview">
+                <img id="trn-tab-favicon" alt="Favicon" />
+                <span id="trn-tab-title"></span>
+                <button class="trn-tab-close">×</button>
+            </div>
         </div>
 		<?php
 	}
