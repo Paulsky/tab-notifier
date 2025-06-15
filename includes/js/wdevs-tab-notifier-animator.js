@@ -1,6 +1,6 @@
 import jQuery from 'jquery';
 
-class TrnAnimator {
+class WtnAnimator {
 	constructor( options ) {
 		this.settings = {
 			animation: 'rotating', // 'rotating' or 'scrolling'
@@ -98,7 +98,7 @@ class TrnAnimator {
 		if ( ! this.settings.preview ) {
 			document.title = message;
 		} else {
-			const titleElement = document.getElementById( 'trn-tab-title' );
+			const titleElement = document.getElementById( 'wtn-tab-title' );
 			if ( titleElement ) {
 				titleElement.textContent = message;
 			}
@@ -106,4 +106,4 @@ class TrnAnimator {
 	}
 }
 
-export default TrnAnimator;
+export default WtnAnimator;

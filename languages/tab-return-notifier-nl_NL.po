@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tab Return Notifier\n"
-"POT-Creation-Date: 2025-06-15 16:50+0200\n"
-"PO-Revision-Date: 2025-06-15 16:35+0200\n"
+"POT-Creation-Date: 2025-06-15 16:47+0200\n"
+"PO-Revision-Date: 2025-06-15 16:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -25,171 +25,178 @@ msgstr ""
 #: admin/class-wdevs-tab-notifier-admin-view.php:26
 #: admin/class-wdevs-tab-notifier-admin.php:133
 msgid "Tab Return Notifier"
-msgstr ""
+msgstr "Tab Terugkeer Notificaties"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:32
 msgid "Secondary menu"
-msgstr ""
+msgstr "Tweede menu"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:35
 #: admin/class-wdevs-tab-notifier-admin-view.php:74
 #: admin/class-wdevs-tab-notifier-admin-view.php:105
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:39
 #: admin/class-wdevs-tab-notifier-admin-view.php:205
 msgid "Preview"
-msgstr ""
+msgstr "Voorvertoning"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:75
 msgid "Configure the notification settings."
-msgstr ""
+msgstr "Configureer de notificatie instellingen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:78
 msgid "Global settings"
-msgstr ""
+msgstr "Globale instellingen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:86
 #: admin/class-wdevs-tab-notifier-admin-view.php:125
 #: admin/class-wdevs-tab-notifier-admin-view.php:167
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:88
 msgid "Enable messages"
-msgstr ""
+msgstr "Schakel berichten in"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:90
 msgid "Animation"
-msgstr ""
+msgstr "Animatie"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:91
 msgid "Rotating"
-msgstr ""
+msgstr "Roterend"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:92
 msgid "Scrolling"
-msgstr ""
+msgstr "Scrollend"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:93
 msgid "The animation of the messages"
-msgstr ""
+msgstr "De animatie van de berichten"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:94
 msgid "Speed"
-msgstr ""
+msgstr "Snelheid"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:94
 msgid ""
 "Animation speed in milliseconds. Most browsers perform better with values of "
 "500 or higher."
 msgstr ""
+"Animatiesnelheid in milliseconden. De meeste browsers presteren beter met "
+"waarden van 500 of hoger."
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:115
 msgid "Post types"
-msgstr ""
+msgstr "Berichttypen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:116
 msgid "Configure notifications for specific post types."
-msgstr ""
+msgstr "Configureer meldingen voor specifieke berichttypen."
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:128
 #: admin/class-wdevs-tab-notifier-admin-view.php:170
 #, php-format
 msgid "Enable for %s"
-msgstr ""
+msgstr "Inschakelen voor %s"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:137
 #, php-format
 msgid "Leave messages empty to use default messages for %s"
-msgstr ""
+msgstr "Laat berichten leeg om standaardberichten voor %s te gebruiken"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:157
 msgid "Taxonomies"
-msgstr ""
+msgstr "Taxonomieën"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:158
 msgid "Configure notifications for specific taxonomies."
-msgstr ""
+msgstr "Configureer meldingen voor specifieke taxonomieën."
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:179
 #, php-format
 msgid "Leave blank to use default messages for %s"
-msgstr ""
+msgstr "Laat leeg om standaardberichten voor %s te gebruiken"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:206
 msgid ""
 "Please see the preview below. Note that only the general messages are "
 "displayed, and all variables are placeholder data."
 msgstr ""
+"Bekijk de preview hieronder. Let op: alleen de algemene berichten worden "
+"weergegeven en alle variabelen zijn tijdelijke placeholders."
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:319
 msgid "Messages"
-msgstr ""
+msgstr "Berichten"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:353
 msgid "Add another message"
-msgstr ""
+msgstr "Voeg nog een bericht toe"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:379
 msgid "Drag to reorder"
-msgstr ""
+msgstr "Versleep om opnieuw te ordenen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:388
 msgid "Insert emoji"
-msgstr ""
+msgstr "Emoji invoegen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:390
 msgid "Insert variable"
-msgstr ""
+msgstr "Variabele invoegen"
 
 #: admin/class-wdevs-tab-notifier-admin-view.php:392
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: admin/class-wdevs-tab-notifier-admin.php:132
 msgid "Tab Return Notifier Settings"
-msgstr ""
+msgstr "Tab Terugkeer Notificaties Instellingen"
 
 #: admin/class-wdevs-tab-notifier-admin.php:265
 msgid "Settings saved"
-msgstr ""
+msgstr "Instellingen opgeslagen"
 
 #: includes/class-wdevs-tab-notifier-variables.php:26
 msgid "Document title"
-msgstr ""
+msgstr "Documenttitel"
 
 #: includes/class-wdevs-tab-notifier-variables.php:30
 msgid "Post title"
-msgstr ""
+msgstr "Berichttitel"
 
 #: includes/class-wdevs-tab-notifier-variables.php:34
 msgid "Site name"
-msgstr ""
+msgstr "Sitenaam"
 
 #: includes/class-wdevs-tab-notifier-variables.php:43
 msgid "Number of items in cart"
-msgstr ""
+msgstr "Aantal artikelen in winkelwagen"
 
 #: includes/class-wdevs-tab-notifier-variables.php:47
 msgid "Recently viewed product"
-msgstr ""
+msgstr "Recent bekeken product"
 
 #. Plugin URI of the plugin/theme
 msgid "https://products.wijnberg.dev"
-msgstr ""
+msgstr "https://products.wijnberg.dev"
 
 #. Description of the plugin/theme
 msgid ""
 "Bring visitors back to your site with animated tab notifications triggered "
 "when they switch to another browser tab."
 msgstr ""
+"Haal bezoekers terug naar uw site met geanimeerde tabbladmeldingen die "
+"worden geactiveerd wanneer bezoekers naar een ander browsertabblad "
+"overschakelen."
 
 #. Author of the plugin/theme
 msgid "Wijnberg Developments"
-msgstr ""
+msgstr "Wijnberg Developments"
 
 #. Author URI of the plugin/theme
 msgid "https://wijnberg.dev/"
-msgstr ""
+msgstr "https://wijnberg.dev/"

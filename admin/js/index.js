@@ -1,3 +1,3 @@
-import './tab-return-notifier-admin';
-import './tab-return-notifier-elements';
-import './tab-return-notifier-preview';
+import './wdevs-tab-notifier-admin';
+import './wdevs-tab-notifier-elements';
+import './wdevs-tab-notifier-preview';

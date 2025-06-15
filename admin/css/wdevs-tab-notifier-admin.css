@@ -20,7 +20,7 @@
 
 /*end settings*/
 /*begin preview*/
-.trn-tab-preview {
+.wtn-tab-preview {
     display: flex;
     align-items: center;
     background: #e0e0e0;
@@ -32,13 +32,13 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.trn-tab-preview img {
+.wtn-tab-preview img {
     width: 16px;
     height: 16px;
     margin-right: 8px;
 }
 
-.trn-tab-preview span {
+.wtn-tab-preview span {
     font-size: 14px;
     color: #333;
     white-space: nowrap;
@@ -50,7 +50,7 @@
     width: 285px;
 }
 
-.trn-tab-close {
+.wtn-tab-close {
     background: transparent;
     border: none;
     color: #666;
@@ -63,7 +63,7 @@
     margin-left: auto;
 }
 
-.trn-tab-close:hover {
+.wtn-tab-close:hover {
     opacity: 1;
     color: #000;
 }

@@ -4,10 +4,10 @@
  * Handles all admin view rendering for the plugin.
  *
  * @since      1.0.0
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/admin
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/admin
  */
-class Tab_Return_Notifier_Admin_View {
+class Wdevs_Tab_Notifier_Admin_View {
 
 	/**
 	 * Render the settings page.
@@ -43,12 +43,12 @@ class Tab_Return_Notifier_Admin_View {
 
         <hr class="wp-header-end">
 
-		<?php settings_errors( 'tab_return_notifier_messages' ); ?>
+		<?php settings_errors( 'wdevs_tab_notifier_messages' ); ?>
 
         <div class="health-check-body health-check-status-tab hide-if-no-js">
             <form method="post" action="">
-				<?php settings_fields( 'tab_return_notifier_settings' ); ?>
-				<?php wp_nonce_field( 'tab_return_notifier_settings' ); ?>
+				<?php settings_fields( 'wdevs_tab_notifier_settings' ); ?>
+				<?php wp_nonce_field( 'wdevs_tab_notifier_settings' ); ?>
 
 				<?php if ( $active_tab === 'settings' ) : ?>
 					<?php $this->render_settings_tab( $options, $post_types, $taxonomies ); ?>
@@ -72,10 +72,10 @@ class Tab_Return_Notifier_Admin_View {
 	protected function render_settings_tab( array $options, array $post_types, array $taxonomies ): void {
 		?>
         <h2><?php esc_html_e( 'Settings', 'tab-return-notifier' ); ?></h2>
-        <p><?php esc_html_e( 'Configure the tab return notification settings.', 'tab-return-notifier' ); ?></p>
+        <p><?php esc_html_e( 'Configure the notification settings.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
-            <h3 class="site-health-issue-count-title"><?php esc_html_e( 'Global Settings', 'tab-return-notifier' ); ?></h3>
+            <h3 class="site-health-issue-count-title"><?php esc_html_e( 'Global settings', 'tab-return-notifier' ); ?></h3>
             <div class="health-check-accordion">
 				<?php
 				$content = '<table class="form-table" role="presentation">' .
@@ -112,7 +112,7 @@ class Tab_Return_Notifier_Admin_View {
 
 		<?php if ( ! empty( $post_types ) ) : ?>
             <div class="site-health-issues-wrapper">
-                <h3 class="site-health-issue-count-title"><?php esc_html_e( 'Post Types', 'tab-return-notifier' ); ?></h3>
+                <h3 class="site-health-issue-count-title"><?php esc_html_e( 'Post types', 'tab-return-notifier' ); ?></h3>
                 <p><?php esc_html_e( 'Configure notifications for specific post types.', 'tab-return-notifier' ); ?></p>
                 <div class="health-check-accordion">
 					<?php foreach ( $post_types as $post_type ) : ?>
@@ -206,10 +206,10 @@ class Tab_Return_Notifier_Admin_View {
         <p><?php esc_html_e( 'Please see the preview below. Note that only the general messages are displayed, and all variables are placeholder data.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
-            <div class="trn-tab-preview">
-                <img id="trn-tab-favicon" alt="Favicon" />
-                <span id="trn-tab-title"></span>
-                <button class="trn-tab-close">×</button>
+            <div class="wtn-tab-preview">
+                <img id="wtn-tab-favicon" alt="Favicon" />
+                <span id="wtn-tab-title"></span>
+                <button class="wtn-tab-close">×</button>
             </div>
         </div>
 		<?php
@@ -265,8 +265,8 @@ class Tab_Return_Notifier_Admin_View {
 	public function render_checkbox_row( string $name, bool $checked, string $label, string $array_key = '', string $description = '' ): string {
 		$field_id   = esc_attr( $name ) . ( ! empty( $array_key ) ? '_' . esc_attr( $array_key ) : '' ) . '_enabled';
 		$field_name = ! empty( $array_key )
-			? 'tab_return_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . '][enabled]'
-			: 'tab_return_notifier_options[' . esc_attr( $name ) . '][enabled]';
+			? 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . '][enabled]'
+			: 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][enabled]';
 
 		ob_start();
 		?>
@@ -309,8 +309,8 @@ class Tab_Return_Notifier_Admin_View {
 	public function render_messages_row( string $name, array $value, string $array_key = '', string $description = '' ): string {
 		$field_id   = esc_attr( $name ) . ( ! empty( $array_key ) ? '_' . esc_attr( $array_key ) : '' ) . '_messages';
 		$field_name = ! empty( $array_key )
-			? 'tab_return_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . '][messages]'
-			: 'tab_return_notifier_options[' . esc_attr( $name ) . '][messages]';
+			? 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . '][messages]'
+			: 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][messages]';
 
 		ob_start();
 		?>
@@ -340,8 +340,8 @@ class Tab_Return_Notifier_Admin_View {
 	public function render_messages_element( string $field_name, array $messages = [], string $description = '' ): string {
 		ob_start();
 		?>
-        <div class="trn-messages-wrapper">
-            <div class="trn-messages-container">
+        <div class="wtn-messages-wrapper">
+            <div class="wtn-messages-container">
 				<?php if ( empty( $messages ) ) : ?>
 					<?php echo $this->render_message_input_group( $field_name ); ?>
 				<?php else : ?>
@@ -350,7 +350,7 @@ class Tab_Return_Notifier_Admin_View {
 					<?php endforeach; ?>
 				<?php endif; ?>
                 <button type="button"
-                        class="button trn-add-message"><?php esc_html_e( 'Add another message', 'tab-return-notifier' ); ?></button>
+                        class="button wtn-add-message"><?php esc_html_e( 'Add another message', 'tab-return-notifier' ); ?></button>
             </div>
 			<?php if ( $description ) : ?>
                 <p class="description"><?php echo wp_kses_post( $description ); ?></p>
@@ -375,21 +375,21 @@ class Tab_Return_Notifier_Admin_View {
 		$formatted_message = preg_replace( '/\{\{(.*?)\}\}/', '&ZeroWidthSpace;<code class="variable">{{$1}}</code>&ZeroWidthSpace;', esc_html( $message ) );
 		ob_start();
 		?>
-        <div class="trn-message-input-group">
-            <span type="button" class="trn-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'tab-return-notifier'); ?>">
+        <div class="wtn-message-input-group">
+            <span type="button" class="wtn-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'tab-return-notifier'); ?>">
                 <span class="dashicons dashicons-menu"></span>
             </span>
             <input type="hidden" name="<?php echo esc_attr( $name_attribute ); ?>"
                    value="<?php echo esc_attr( $message ); ?>">
-            <div class="trn-editable-input" contenteditable="true"
+            <div class="wtn-editable-input" contenteditable="true"
                  data-field-name="<?php echo esc_attr( $name_attribute ); ?>"><?php echo $formatted_message; ?></div>
-            <div class="trn-input-group-actions button-group">
+            <div class="wtn-input-group-actions button-group">
                 <button type="button"
-                        class="button trn-insert-emoji"><?php esc_html_e( 'Insert emoji', 'tab-return-notifier' ); ?></button>
+                        class="button wtn-insert-emoji"><?php esc_html_e( 'Insert emoji', 'tab-return-notifier' ); ?></button>
                 <button type="button"
-                        class="button trn-insert-variable"><?php esc_html_e( 'Insert variable', 'tab-return-notifier' ); ?></button>
+                        class="button wtn-insert-variable"><?php esc_html_e( 'Insert variable', 'tab-return-notifier' ); ?></button>
                 <button type="button"
-                        class="button trn-remove-message"><?php esc_html_e( 'Remove', 'tab-return-notifier' ); ?></button>
+                        class="button wtn-remove-message"><?php esc_html_e( 'Remove', 'tab-return-notifier' ); ?></button>
             </div>
         </div>
 		<?php
@@ -412,7 +412,7 @@ class Tab_Return_Notifier_Admin_View {
 	 */
 	public function render_select_row(string $name, string $selected, string $label, array $options, string $array_key, string $description = '', bool $multiple = false): string {
 		$field_id = esc_attr($name) . (!empty($array_key) ? '_' . esc_attr($array_key) : '') . '_select';
-		$field_name = 'tab_return_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
+		$field_name = 'wdevs_tab_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
 
 		if ($multiple) {
 			$field_name .= '[]';
@@ -461,7 +461,7 @@ class Tab_Return_Notifier_Admin_View {
 	 */
 	public function render_number_row(string $name, int $value, string $label, string $array_key, string $description = ''): string {
 		$field_id = esc_attr($name) . (!empty($array_key) ? '_' . esc_attr($array_key) : '') . '_number';
-		$field_name = 'tab_return_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
+		$field_name = 'wdevs_tab_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
 
 		ob_start();
 		?>

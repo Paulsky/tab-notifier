@@ -1,1 +1,1 @@
-import './tab-return-notifier-public';
+import './wdevs-tab-notifier-public';

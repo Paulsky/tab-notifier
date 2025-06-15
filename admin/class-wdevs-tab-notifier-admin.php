@@ -6,8 +6,8 @@
  * @link       https://wijnberg.dev
  * @since      1.0.0
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/admin
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/admin
  */
 
 /**
@@ -16,13 +16,13 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/admin
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/admin
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-class Tab_Return_Notifier_Admin {
+class Wdevs_Tab_Notifier_Admin {
 
-	use Tab_Return_Notifier_Helper;
+	use Wdevs_Tab_Notifier_Helper;
 
 	/**
 	 * The ID of this plugin.
@@ -47,7 +47,7 @@ class Tab_Return_Notifier_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      Tab_Return_Notifier_Admin_View $admin_view
+	 * @var      Wdevs_Tab_Notifier_Admin_View $admin_view
 	 * */
 	private $admin_view;
 
@@ -60,9 +60,9 @@ class Tab_Return_Notifier_Admin {
 	 * @since    1.0.0
 	 */
 	public function __construct( $plugin_name, $version ) {
-		$this->plugin_name   = $plugin_name;
-		$this->version       = $version;
-		$this->admin_view    = new Tab_Return_Notifier_Admin_View();
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
+		$this->admin_view  = new Wdevs_Tab_Notifier_Admin_View();
 	}
 
 	/**
@@ -74,15 +74,15 @@ class Tab_Return_Notifier_Admin {
 		if ( $this->is_settings_page() ) {
 			wp_enqueue_style(
 				$this->plugin_name,
-				plugin_dir_url( __FILE__ ) . 'css/tab-return-notifier-admin.css',
+				plugin_dir_url( __FILE__ ) . 'css/wdevs-tab-notifier-admin.css',
 				array( 'site-health' ),
 				$this->version,
 				'all'
 			);
 
 			wp_enqueue_style(
-				'tab-return-notifier-elements',
-				plugin_dir_url( __FILE__ ) . 'css/tab-return-notifier-elements.css',
+				'wdevs-tab-notifier-elements',
+				plugin_dir_url( __FILE__ ) . 'css/wdevs-tab-notifier-elements.css',
 				array(),
 				$this->version,
 				'all'
@@ -97,26 +97,26 @@ class Tab_Return_Notifier_Admin {
 	 */
 	public function enqueue_scripts() {
 		if ( $this->is_settings_page() ) {
-			$script_asset = require( plugin_dir_path( dirname( __FILE__ ) ) . 'build/tab-return-notifier-admin.asset.php' );
+			$script_asset = require( plugin_dir_path( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-admin.asset.php' );
 			$admin_handle = $this->plugin_name . '-admin';
 			wp_enqueue_script(
 				$admin_handle,
-				plugin_dir_url( dirname( __FILE__ ) ) . 'build/tab-return-notifier-admin.js',
-				array_merge($script_asset['dependencies'], ['tab-return-notifier-shared', 'jquery-ui-sortable']),
+				plugin_dir_url( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-admin.js',
+				array_merge( $script_asset['dependencies'], [ 'wdevs-tab-notifier-shared', 'jquery-ui-sortable' ] ),
 				$script_asset['version']
 			);
 
 			$messages = $this->get_messages_for_preview();
-			$options  = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
+			$options  = get_option( 'wdevs_tab_notifier_options', $this->get_default_settings() );
 
 			wp_localize_script(
 				$admin_handle,
-				'trnData',
+				'wtnData',
 				array(
-					'variables' => Tab_Return_Notifier_Variables::get_variables(),
-					'animation'      => $options['general']['animation'],
-					'speed'          => $options['general']['speed'],
-					'messages'       => $messages,
+					'variables' => Wdevs_Tab_Notifier_Variables::get_variables(),
+					'animation' => $options['general']['animation'],
+					'speed'     => $options['general']['speed'],
+					'messages'  => $messages,
 				)
 			);
 		}
@@ -137,6 +137,12 @@ class Tab_Return_Notifier_Admin {
 		);
 	}
 
+	/**
+	 * Check if current page is the plugin settings page.
+	 *
+	 * @return bool True if current page is the settings page, false otherwise
+	 * @since    1.0.0
+	 */
 	public function is_settings_page() {
 		return ( is_admin() && isset( $_GET['page'] ) && $_GET['page'] === 'tab-return-notifier' );
 	}
@@ -148,8 +154,8 @@ class Tab_Return_Notifier_Admin {
 	 */
 	public function register_settings() {
 		register_setting(
-			'tab_return_notifier_settings',
-			'tab_return_notifier_options',
+			'wdevs_tab_notifier_settings',
+			'wdevs_tab_notifier_options',
 			array(
 				'default'           => $this->get_default_settings(),
 				'sanitize_callback' => array( $this, 'sanitize_settings' )
@@ -182,6 +188,7 @@ class Tab_Return_Notifier_Admin {
 				: 'rotating';
 			$output['general']['speed']     = absint( $input['general']['speed'] );
 			$output['general']['messages']  = $this->sanitize_messages( $input['general']['messages'] );
+			$this->register_translations_for_messages( 'general_messages', $output['general']['messages'] );
 		}
 
 		if ( isset( $input['post_types'] ) ) {
@@ -189,6 +196,7 @@ class Tab_Return_Notifier_Admin {
 				if ( isset( $input['post_types'][ $post_type ] ) ) {
 					$output['post_types'][ $post_type ]['enabled']  = ! empty( $input['post_types'][ $post_type ]['enabled'] );
 					$output['post_types'][ $post_type ]['messages'] = $this->sanitize_messages( $input['post_types'][ $post_type ]['messages'] );
+					$this->register_translations_for_messages( 'post_types_' . $post_type . '_messages', $output['post_types'][ $post_type ]['messages'] );
 				}
 			}
 		}
@@ -198,6 +206,7 @@ class Tab_Return_Notifier_Admin {
 				if ( isset( $input['taxonomies'][ $taxonomy ] ) ) {
 					$output['taxonomies'][ $taxonomy ]['enabled']  = ! empty( $input['taxonomies'][ $taxonomy ]['enabled'] );
 					$output['taxonomies'][ $taxonomy ]['messages'] = $this->sanitize_messages( $input['taxonomies'][ $taxonomy ]['messages'] );
+					$this->register_translations_for_messages( 'taxonomies_' . $taxonomy . '_messages', $output['taxonomies'][ $taxonomy ]['messages'] );
 				}
 			}
 		}
@@ -205,6 +214,14 @@ class Tab_Return_Notifier_Admin {
 		return $output;
 	}
 
+	/**
+	 * Sanitize message array before saving.
+	 *
+	 * @param array|string $messages Messages to sanitize
+	 *
+	 * @return array Sanitized messages array
+	 * @since    1.0.0
+	 */
 	private function sanitize_messages( $messages ) {
 		if ( empty( $messages ) ) {
 			return array();
@@ -232,19 +249,19 @@ class Tab_Return_Notifier_Admin {
 	 */
 	public function display_settings_page() {
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'settings';
-		$options    = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
+		$options    = get_option( 'wdevs_tab_notifier_options', $this->get_default_settings() );
 		$post_types = $this->get_public_post_types( 'objects' );
 		$taxonomies = $this->get_public_taxonomies( 'objects' );
 
-		if ( isset( $_POST['tab_return_notifier_options'] ) && check_admin_referer( 'tab_return_notifier_settings' ) ) {
+		if ( isset( $_POST['wdevs_tab_notifier_options'] ) && check_admin_referer( 'wdevs_tab_notifier_settings' ) ) {
 
-			$options = $_POST['tab_return_notifier_options'] ?? array();
+			$options = $_POST['wdevs_tab_notifier_options'] ?? array();
 
-			update_option( 'tab_return_notifier_options', $options );
+			update_option( 'wdevs_tab_notifier_options', $options );
 
 			add_settings_error(
-				'tab_return_notifier_messages',
-				'tab_return_notifier_message',
+				'wdevs_tab_notifier_messages',
+				'wdevs_tab_notifier_message',
 				__( 'Settings saved', 'tab-return-notifier' ),
 				'updated'
 			);
@@ -253,11 +270,34 @@ class Tab_Return_Notifier_Admin {
 		$this->admin_view->render_settings_page( $active_tab, $options, $post_types, $taxonomies );
 	}
 
+	/**
+	 * Get messages for preview in admin area.
+	 *
+	 * @return array Array of messages for preview
+	 * @since    1.0.0
+	 */
 	private function get_messages_for_preview() {
-		$options = get_option( 'tab_return_notifier_options', $this->get_default_settings() );
+		$options = get_option( 'wdevs_tab_notifier_options', $this->get_default_settings() );
 
 		$templates = $options['general']['messages'];
 
 		return $templates;
+	}
+
+	/**
+	 * Register string translations for an array of messages
+	 *
+	 * @since 1.0.0
+	 */
+	private function register_translations_for_messages( $group_name, $messages ) {
+		// Check if WPML is active
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			return;
+		}
+
+		foreach ($messages as $index => $message) {
+			$name = $group_name . '_' . $index;
+			$this->register_translation($name, $message);
+		}
 	}
 }

@@ -13,13 +13,13 @@
 /**
  * The shared  functionality of the plugin.
  *
- * Defines functions for all the shared code of Tab_Return_Notifier
+ * Defines functions for all the shared code of Wdevs_Tab_Notifier
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-class Tab_Return_Notifier_Shared {
+class Wdevs_Tab_Notifier_Shared {
 
 	/**
 	 * The ID of this plugin.
@@ -57,12 +57,12 @@ class Tab_Return_Notifier_Shared {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {
-		$script_asset = require( plugin_dir_path( dirname( __FILE__ ) ) . 'build/tab-return-notifier-shared.asset.php' );
+		$script_asset = require( plugin_dir_path( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-shared.asset.php' );
 		$shared_handle = $this->plugin_name . '-shared';
 
 		wp_register_script(
 			$shared_handle,
-			plugin_dir_url( dirname( __FILE__ ) ) . 'build/tab-return-notifier-shared.js',
+			plugin_dir_url( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-shared.js',
 			$script_asset['dependencies'],
 			$script_asset['version']
 		);

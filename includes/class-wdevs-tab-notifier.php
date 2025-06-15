@@ -9,8 +9,8 @@
  * @link       https://wijnberg.dev
  * @since      1.0.0
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-class Tab_Return_Notifier {
+class Wdevs_Tab_Notifier {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Tab_Return_Notifier {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Tab_Return_Notifier_Loader $loader Maintains and registers all hooks for the plugin.
+	 * @var      Wdevs_Tab_Notifier_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,12 +67,12 @@ class Tab_Return_Notifier {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'TAB_RETURN_NOTIFIER_VERSION' ) ) {
-			$this->version = TAB_RETURN_NOTIFIER_VERSION;
+		if ( defined( 'WDEVS_TAB_NOTIFIER_VERSION' ) ) {
+			$this->version = WDEVS_TAB_NOTIFIER_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'tab-return-notifier';
+		$this->plugin_name = 'wdevs-tab-notifier';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -87,10 +87,10 @@ class Tab_Return_Notifier {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Tab_Return_Notifier_Loader. Orchestrates the hooks of the plugin.
-	 * - Tab_Return_Notifier_i18n. Defines internationalization functionality.
-	 * - Tab_Return_Notifier_Admin. Defines all hooks for the admin area.
-	 * - Tab_Return_Notifier_Public. Defines all hooks for the public side of the site.
+	 * - Wdevs_Tab_Notifier_Loader. Orchestrates the hooks of the plugin.
+	 * - Wdevs_Tab_Notifier_i18n. Defines internationalization functionality.
+	 * - Wdevs_Tab_Notifier_Admin. Defines all hooks for the admin area.
+	 * - Wdevs_Tab_Notifier_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -104,54 +104,53 @@ class Tab_Return_Notifier {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tab-return-notifier-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tab-return-notifier-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-i18n.php';
 
 		/**
 		 * The class responsible for post types and taxonomies.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tab-return-notifier-variables.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-variables.php';
 
 		/**
 		 * The class responsible for settings and helpers
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/trait-tab-return-notifier-helper.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/trait-wdevs-tab-notifier-helper.php';
 
 		/**
 		 * The class responsible for shared functions
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tab-return-notifier-shared.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-shared.php';
 
 		/**
 		 * The class responsible for rendering the admin html.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tab-return-notifier-admin-view.php';
-
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wdevs-tab-notifier-admin-view.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tab-return-notifier-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wdevs-tab-notifier-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tab-return-notifier-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wdevs-tab-notifier-public.php';
 
-		$this->loader = new Tab_Return_Notifier_Loader();
+		$this->loader = new Wdevs_Tab_Notifier_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Tab_Return_Notifier_i18n class in order to set the domain and to register the hook
+	 * Uses the Wdevs_Tab_Notifier_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -159,7 +158,7 @@ class Tab_Return_Notifier {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Tab_Return_Notifier_i18n();
+		$plugin_i18n = new Wdevs_Tab_Notifier_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -173,7 +172,7 @@ class Tab_Return_Notifier {
 	 * @access   private
 	 */
 	private function define_shared_hooks() {
-		$plugin_shared = new Tab_Return_Notifier_Shared( $this->get_plugin_name(), $this->get_version() );
+		$plugin_shared = new Wdevs_Tab_Notifier_Shared( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'init', $plugin_shared, 'enqueue_scripts' );
 	}
 
@@ -186,7 +185,7 @@ class Tab_Return_Notifier {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Tab_Return_Notifier_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Wdevs_Tab_Notifier_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -204,13 +203,13 @@ class Tab_Return_Notifier {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Tab_Return_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Wdevs_Tab_Notifier_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		//AJAX Requests
-		$this->loader->add_action( 'wp_ajax_' . Tab_Return_Notifier_Public::AJAX_ACTION_RENDER, $plugin_public, Tab_Return_Notifier_Public::AJAX_ACTION_RENDER . '_action' );
-		$this->loader->add_action( 'wp_ajax_nopriv_' . Tab_Return_Notifier_Public::AJAX_ACTION_RENDER, $plugin_public, Tab_Return_Notifier_Public::AJAX_ACTION_RENDER . '_action' );
+		$this->loader->add_action( 'wp_ajax_' . Wdevs_Tab_Notifier_Public::AJAX_ACTION_RENDER, $plugin_public, Wdevs_Tab_Notifier_Public::AJAX_ACTION_RENDER . '_action' );
+		$this->loader->add_action( 'wp_ajax_nopriv_' . Wdevs_Tab_Notifier_Public::AJAX_ACTION_RENDER, $plugin_public, Wdevs_Tab_Notifier_Public::AJAX_ACTION_RENDER . '_action' );
 
 	}
 
@@ -237,7 +236,7 @@ class Tab_Return_Notifier {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return    Tab_Return_Notifier_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Wdevs_Tab_Notifier_Loader    Orchestrates the hooks of the plugin.
 	 * @since     1.0.0
 	 */
 	public function get_loader() {

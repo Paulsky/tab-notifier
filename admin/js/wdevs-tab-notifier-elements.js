@@ -4,10 +4,10 @@ import 'emoji-picker-element';
 ( function ( $, window ) {
 	'use strict';
 
-	const TrnElements = {
+	const WtnElements = {
 		settings: {
 			variables: [],
-			menuSelector: '#trn-variable-menu',
+			menuSelector: '#wtn-variable-menu',
 			emojiPickerSelector: 'emoji-picker',
 		},
 
@@ -21,15 +21,15 @@ import 'emoji-picker-element';
 
 		getVariables() {
 			const formatted = [];
-			if ( typeof window.trnData === 'undefined' ) {
+			if ( typeof window.wtnData === 'undefined' ) {
 				return formatted;
 			}
 
-			if ( ! window.trnData.variables ) {
+			if ( ! window.wtnData.variables ) {
 				return formatted;
 			}
 
-			const variables = window.trnData.variables;
+			const variables = window.wtnData.variables;
 
 			for ( const [ key, data ] of Object.entries( variables ) ) {
 				formatted.push( {
@@ -46,7 +46,7 @@ import 'emoji-picker-element';
 			if ( $( this.settings.menuSelector ).length > 0 ) return;
 
 			const $menu = $( '<div>', {
-				id: 'trn-variable-menu',
+				id: 'wtn-variable-menu',
 				css: {
 					display: 'none',
 					position: 'absolute',
@@ -59,7 +59,7 @@ import 'emoji-picker-element';
 				$( '<li>', {
 					text: variable.label,
 					'data-variable': variable.key,
-					class: 'trn-variable-menu-item',
+					class: 'wtn-variable-menu-item',
 				} ).appendTo( $ul );
 			} );
 
@@ -86,28 +86,28 @@ import 'emoji-picker-element';
 		setupEventHandlers: function () {
 			$( document ).on(
 				'mouseup keyup',
-				'.trn-editable-input',
+				'.wtn-editable-input',
 				this.handleSelectionChange.bind( this )
 			);
 			$( document ).on(
 				'click',
-				'.trn-insert-variable',
+				'.wtn-insert-variable',
 				this.handleVariableButtonClick.bind( this )
 			);
 			$( document ).on(
 				'click',
-				'.trn-insert-emoji',
+				'.wtn-insert-emoji',
 				this.handleEmojiButtonClick.bind( this )
 			);
 			$( document ).on( 'click', this.handleOutsideClick.bind( this ) );
 			$( document ).on(
 				'click',
-				'.trn-editable-input .variable',
+				'.wtn-editable-input .variable',
 				this.handleVariableClick.bind( this )
 			);
 			$( document ).on(
 				'keydown',
-				'.trn-editable-input',
+				'.wtn-editable-input',
 				this.handleKeyEvents.bind( this )
 			);
 
@@ -128,9 +128,9 @@ import 'emoji-picker-element';
 				);
 			}
 
-			$( '.trn-messages-container' ).on(
+			$( '.wtn-messages-container' ).on(
 				'input blur',
-				'.trn-editable-input',
+				'.wtn-editable-input',
 				this.handleInputChange.bind( this )
 			);
 		},
@@ -175,7 +175,7 @@ import 'emoji-picker-element';
 			const isPickerClick =
 				$target.closest( this.settings.emojiPickerSelector ).length > 0;
 			const isTriggerClick =
-				$target.closest( '.trn-insert-variable, .trn-insert-emoji' )
+				$target.closest( '.wtn-insert-variable, .wtn-insert-emoji' )
 					.length > 0;
 
 			if ( ! isMenuClick && ! isPickerClick && ! isTriggerClick ) {
@@ -302,8 +302,8 @@ import 'emoji-picker-element';
 		},
 
 		showElementAtCaret: function ( $button, event, $element ) {
-			const $group = $button.closest( '.trn-message-input-group' );
-			const $editable = $group.find( '.trn-editable-input' );
+			const $group = $button.closest( '.wtn-message-input-group' );
+			const $editable = $group.find( '.wtn-editable-input' );
 			$editable.focus();
 
 			if ( this.lastRange ) {
@@ -383,7 +383,7 @@ import 'emoji-picker-element';
 			selection.addRange( newRange );
 			this.lastRange = newRange.cloneRange();
 
-			$( code ).closest( '.trn-editable-input' ).trigger( 'input' );
+			$( code ).closest( '.wtn-editable-input' ).trigger( 'input' );
 		},
 
 		selectVariable: function ( variableElement ) {
@@ -413,58 +413,58 @@ import 'emoji-picker-element';
 			selection.addRange( newRange );
 			this.lastRange = newRange.cloneRange();
 
-			$( textNode ).closest( '.trn-editable-input' ).trigger( 'input' );
+			$( textNode ).closest( '.wtn-editable-input' ).trigger( 'input' );
 		},
 	};
 
 	$( function () {
-		TrnElements.init();
+		WtnElements.init();
 
 		$( document ).ready( function () {
-			$( '.trn-messages-container' ).sortable( {
-				items: '> .trn-message-input-group',
-				handle: '.trn-drag-handle',
+			$( '.wtn-messages-container' ).sortable( {
+				items: '> .wtn-message-input-group',
+				handle: '.wtn-drag-handle',
 				axis: 'y',
 			} );
 		} );
 
 		// Add new message field
-		$( '.trn-messages-container' ).on(
+		$( '.wtn-messages-container' ).on(
 			'click',
-			'.trn-add-message',
+			'.wtn-add-message',
 			function () {
 				const container = $( this ).closest(
-					'.trn-messages-container'
+					'.wtn-messages-container'
 				);
 				const newGroup = container
-					.find( '.trn-message-input-group' )
+					.find( '.wtn-message-input-group' )
 					.first()
 					.clone();
 				newGroup.find( 'input' ).val( '' );
-				newGroup.find( '.trn-editable-input' ).html( '' );
-				container.find( '.trn-add-message' ).before( newGroup );
+				newGroup.find( '.wtn-editable-input' ).html( '' );
+				container.find( '.wtn-add-message' ).before( newGroup );
 			}
 		);
 
 		// Remove message field
-		$( '.trn-messages-container' ).on(
+		$( '.wtn-messages-container' ).on(
 			'click',
-			'.trn-remove-message',
+			'.wtn-remove-message',
 			function () {
 				const container = $( this ).closest(
-					'.trn-messages-container'
+					'.wtn-messages-container'
 				);
-				const groups = container.find( '.trn-message-input-group' );
+				const groups = container.find( '.wtn-message-input-group' );
 				if ( groups.length > 1 ) {
-					$( this ).closest( '.trn-message-input-group' ).remove();
+					$( this ).closest( '.wtn-message-input-group' ).remove();
 				} else {
 					$( this )
-						.closest( '.trn-message-input-group' )
+						.closest( '.wtn-message-input-group' )
 						.find( 'input' )
 						.val( '' );
 					$( this )
-						.closest( '.trn-message-input-group' )
-						.find( '.trn-editable-input' )
+						.closest( '.wtn-message-input-group' )
+						.find( '.wtn-editable-input' )
 						.html( '' );
 				}
 			}

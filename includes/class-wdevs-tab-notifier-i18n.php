@@ -9,8 +9,8 @@
  * @link       https://wijnberg.dev
  * @since      1.0.0
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  */
 
 /**
@@ -20,12 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-class Tab_Return_Notifier_i18n {
-
+class Wdevs_Tab_Notifier_i18n {
 
 	/**
 	 * Load the plugin text domain for translation.
@@ -41,7 +40,5 @@ class Tab_Return_Notifier_i18n {
 		);
 
 	}
-
-
 
 }

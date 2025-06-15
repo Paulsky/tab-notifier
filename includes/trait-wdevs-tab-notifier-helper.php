@@ -6,8 +6,8 @@
  * @link       https://wijnberg.dev
  * @since      1.0.0
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  */
 
 /**
@@ -15,11 +15,11 @@
  *
  * Defines helper methods for retrieving notifier status and getting messages.
  *
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-trait Tab_Return_Notifier_Helper {
+trait Wdevs_Tab_Notifier_Helper {
 
 	/**
 	 * Get all public post types
@@ -61,7 +61,7 @@ trait Tab_Return_Notifier_Helper {
 				'enabled'   => true,
 				'animation' => 'rotating',
 				'speed'     => 500,
-				'messages'  => ''
+				'messages'  => array()
 			),
 			'post_types' => array(),
 			'taxonomies' => array()
@@ -72,7 +72,7 @@ trait Tab_Return_Notifier_Helper {
 		foreach ( $post_types as $post_type_name ) {
 			$settings['post_types'][ $post_type_name ] = array(
 				'enabled'  => true,
-				'messages' => '',
+				'messages' => array()
 			);
 		}
 
@@ -81,11 +81,38 @@ trait Tab_Return_Notifier_Helper {
 		foreach ( $taxonomies as $taxonomy_name ) {
 			$settings['taxonomies'][ $taxonomy_name ] = array(
 				'enabled'  => true,
-				'messages' => '',
+				'messages' => array()
 			);
 		}
 
 		return $settings;
+	}
+
+	/**
+	 * Register a string translation
+	 *
+	 * @since 1.0.0
+	 */
+	public function register_translation( $name, $string ) {
+		// Check if WPML is active
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			return;
+		}
+
+		do_action( 'wpml_register_single_string', 'tab-return-notifier', $name, $string );
+	}
+
+	/**
+	 * Get a string translation
+	 *
+	 * @since 1.0.0
+	 */
+	public function get_translation( $name, $default ) {
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			return $default;
+		}
+
+		return apply_filters( 'wpml_translate_single_string', $default, 'tab-return-notifier', $name );
 	}
 
 }

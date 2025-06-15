@@ -10,12 +10,12 @@
  *
  * @link              https://wijnberg.dev
  * @since             1.0.0
- * @package           Tab_Return_Notifier
+ * @package           Wdevs_Tab_Notifier
  *
  * @wordpress-plugin
  * Plugin Name:       Tab Return Notifier
  * Plugin URI:        https://products.wijnberg.dev
- * Description:       This is a description of the plugin.
+ * Description:       Bring visitors back to your site with animated tab notifications triggered when they switch to another browser tab.
  * Version:           1.0.0
  * Author:            Wijnberg Developments
  * Author URI:        https://wijnberg.dev/
@@ -35,34 +35,34 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TAB_RETURN_NOTIFIER_VERSION', '1.0.0' );
+define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-tab-return-notifier-activator.php
+ * This action is documented in includes/class-wdevs-tab-notifier-activator.php
  */
-function activate_tab_return_notifier() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tab-return-notifier-activator.php';
-	Tab_Return_Notifier_Activator::activate();
+function activate_wdevs_tab_notifier() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wdevs-tab-notifier-activator.php';
+	Wdevs_Tab_Notifier_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-tab-return-notifier-deactivator.php
+ * This action is documented in includes/class-wdevs-tab-notifier-deactivator.php
  */
-function deactivate_tab_return_notifier() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tab-return-notifier-deactivator.php';
-	Tab_Return_Notifier_Deactivator::deactivate();
+function deactivate_wdevs_tab_notifier() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wdevs-tab-notifier-deactivator.php';
+	Wdevs_Tab_Notifier_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_tab_return_notifier' );
-register_deactivation_hook( __FILE__, 'deactivate_tab_return_notifier' );
+register_activation_hook( __FILE__, 'activate_wdevs_tab_notifier' );
+register_deactivation_hook( __FILE__, 'deactivate_wdevs_tab_notifier' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-tab-return-notifier.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-wdevs-tab-notifier.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +73,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-tab-return-notifier.php';
  *
  * @since    1.0.0
  */
-function run_tab_return_notifier() {
+function run_wdevs_tab_notifier() {
 
-	$plugin = new Tab_Return_Notifier();
+	$plugin = new Wdevs_Tab_Notifier();
 	$plugin->run();
 
 }
-run_tab_return_notifier();
+run_wdevs_tab_notifier();

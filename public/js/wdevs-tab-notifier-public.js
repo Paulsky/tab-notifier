@@ -1,10 +1,10 @@
-import TrnAnimator from '../../includes/js/tab-return-notifier-animator';
+import WtnAnimator from '../../includes/js/wdevs-tab-notifier-animator';
 
 ( function ( $, window, document ) {
 	'use strict';
 
 	$( function () {
-		const viewConfig = window.trnData || {
+		const viewConfig = window.wtnData || {
 			animation: 'rotating',
 			speed: 500,
 			messages: [],
@@ -13,7 +13,7 @@ import TrnAnimator from '../../includes/js/tab-return-notifier-animator';
 			messagesAction: '',
 		};
 
-		const animator = new TrnAnimator( {
+		const animator = new WtnAnimator( {
 			animation: viewConfig.animation,
 			speed: viewConfig.speed,
 			messages: viewConfig.messages,

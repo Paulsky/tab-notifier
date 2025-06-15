@@ -8,11 +8,11 @@
  * WooCommerce-specific data when available.
  *
  * @since      1.0.0
- * @package    Tab_Return_Notifier
- * @subpackage Tab_Return_Notifier/includes
+ * @package    Wdevs_Tab_Notifier
+ * @subpackage Wdevs_Tab_Notifier/includes
  * @author     Wijnberg Developments <contact@wijnberg.dev>
  */
-class Tab_Return_Notifier_Variables {
+class Wdevs_Tab_Notifier_Variables {
 
 	/**
 	 * Retrieves all available variables with their labels and values.
@@ -56,7 +56,7 @@ class Tab_Return_Notifier_Variables {
 			return strcmp( $a['label'], $b['label'] );
 		} );
 
-		return apply_filters( 'trn_get_variables', $variables );
+		return apply_filters( 'wtn_get_variables', $variables );
 	}
 
 	/**

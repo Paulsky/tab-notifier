@@ -1,17 +1,17 @@
 import jQuery from 'jquery';
-import TrnAnimator from '../../includes/js/tab-return-notifier-animator';
+import WtnAnimator from '../../includes/js/wdevs-tab-notifier-animator';
 
 ( function ( $ ) {
 	'use strict';
 
 	$( function () {
-		const viewConfig = window.trnData || {
+		const viewConfig = window.wtnData || {
 			animation: 'rotating',
 			speed: 500,
 			messages: [],
 		};
 
-		const faviconHolder = document.getElementById( 'trn-tab-favicon' );
+		const faviconHolder = document.getElementById( 'wtn-tab-favicon' );
 		if ( faviconHolder ) {
 			const favicon = document.querySelector( 'link[rel~="icon"]' );
 			if ( favicon ) {
@@ -23,7 +23,7 @@ import TrnAnimator from '../../includes/js/tab-return-notifier-animator';
 			}
 		}
 
-		const animator = new TrnAnimator( {
+		const animator = new WtnAnimator( {
 			animation: viewConfig.animation,
 			speed: viewConfig.speed,
 			messages: viewConfig.messages,
