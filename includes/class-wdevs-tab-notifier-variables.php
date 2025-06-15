@@ -66,7 +66,7 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_document_title() {
-		return html_entity_decode(wp_get_document_title());
+		return html_entity_decode( wp_get_document_title() );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_post_title() {
-		return html_entity_decode(get_the_title()) ?: null;
+		return html_entity_decode( get_the_title() ) ?: null;
 	}
 
 	/**
@@ -109,9 +109,10 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_cart_items_count() {
-		if(WC()->cart){
+		if ( WC()->cart ) {
 			return WC()->cart->get_cart_contents_count();
 		}
+
 		return 0;
 	}
 
@@ -122,11 +123,11 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_recently_viewed_product_name() {
-		$viewed_products   = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
+		$viewed_products   = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array();
 		$viewed_product_id = end( $viewed_products );
 
-		if ( $viewed_product_id ) {
-			$product = wc_get_product( $viewed_product_id );
+		if ( ! empty( $viewed_product_id ) && is_numeric( $viewed_product_id ) ) {
+			$product = wc_get_product( (int) $viewed_product_id );
 			if ( $product ) {
 				return $product->get_name();
 			}

@@ -81,7 +81,8 @@ class Wdevs_Tab_Notifier_Public {
 				$public_handle,
 				plugin_dir_url( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-public.js',
 				array_merge( $script_asset['dependencies'], [ 'wdevs-tab-notifier-shared' ] ),
-				$script_asset['version']
+				$script_asset['version'],
+				true
 			);
 
 			$messages = $this->get_messages_for_current_view();

@@ -8,7 +8,7 @@ Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Notify users when they switch browser tabs by dynamically changing the page title with customizable messages and animations.
+Notify visitor when they switch browser tabs by dynamically changing the page title with customizable messages and animations.
 
 == Description ==
 
@@ -24,7 +24,7 @@ Tab Return Notifier is a lightweight plugin that helps bring users back to your 
 - Variable system for dynamic content (site name, current page title, etc.)
 - User-friendly admin interface with live preview
 
-Perfect for e-commerce sites, blogs, and any website that wants to reduce bounce rates and bring users back to their content. Tab Return Notifier is a smart tab title changer that helps turn passive browsing into active engagement. This browser tab notifier uses subtle page title animations to recapture attention when users switch tabs. Ideal for highlighting limited-time offers, new content, or abandoned carts, it serves as an effective attention grabber across all modern browsers. Suitable for publishers, e-commerce sites, and marketers looking to reduce tab abandonment and increase time-on-site.
+Perfect for e-commerce sites, blogs, and any website that wants to reduce bounce rates and bring users back to their content. Tab Return Notifier is a smart tab title changer that helps turn passive browsing into active engagement. This browser tab notifier uses subtle page title animations to recapture attention when customers switch tabs. Ideal for highlighting limited-time offers, new content, or abandoned carts, it serves as an effective attention grabber across all modern browsers. Suitable for publishers, e-commerce sites, and marketers looking to reduce tab abandonment and increase time-on-site.
 
 === Dynamic variables ===
 

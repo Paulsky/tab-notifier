@@ -83,15 +83,15 @@ class Wdevs_Tab_Notifier_Admin_View {
 				           $this->render_checkbox_row(
 					           'general',
 					           $options['general']['enabled'] ?? false,
-					           __( 'Enabled', 'tab-return-notifier' ),
+					           esc_html__( 'Enabled', 'tab-return-notifier' ),
 					           '',
-					           __( 'Enable messages', 'tab-return-notifier' )
+					           esc_html__( 'Enable messages', 'tab-return-notifier' )
 				           ) .
-				           $this->render_select_row( 'general', $options['general']['animation'] ?? 'rotating', __( 'Animation', 'tab-return-notifier' ), [
-					           'rotating'  => __( 'Rotating', 'tab-return-notifier' ),
-					           'scrolling' => __( 'Scrolling', 'tab-return-notifier' )
-				           ], 'animation', __( 'The animation of the messages', 'tab-return-notifier' )) .
-				           $this->render_number_row( 'general', $options['general']['speed'] ?? 500, __( 'Speed', 'tab-return-notifier' ), 'speed', __( 'Animation speed in milliseconds. Most browsers perform better with values of 500 or higher.', 'tab-return-notifier' )) .
+				           $this->render_select_row( 'general', $options['general']['animation'] ?? 'rotating', esc_html__( 'Animation', 'tab-return-notifier' ), [
+					           'rotating'  => esc_html__( 'Rotating', 'tab-return-notifier' ),
+					           'scrolling' => esc_html__( 'Scrolling', 'tab-return-notifier' )
+				           ], 'animation', esc_html__( 'The animation of the messages', 'tab-return-notifier' )) .
+				           $this->render_number_row( 'general', $options['general']['speed'] ?? 500, esc_html__( 'Speed', 'tab-return-notifier' ), 'speed', esc_html__( 'Animation speed in milliseconds. Most browsers perform better with values of 500 or higher.', 'tab-return-notifier' )) .
 				           $this->render_messages_row(
 					           'general',
 					           $options['general']['messages'] ?? [],
@@ -122,10 +122,11 @@ class Wdevs_Tab_Notifier_Admin_View {
 						           $this->render_checkbox_row(
 							           'post_types',
 							           $options['post_types'][ $post_type->name ]['enabled'] ?? false,
-							           __( 'Enabled', 'tab-return-notifier' ),
+							           esc_html__( 'Enabled', 'tab-return-notifier' ),
 							           $post_type->name,
+							           /* translators: %s: Post type name */
 							           sprintf(
-								           __( 'Enable for %s', 'tab-return-notifier' ),
+								           esc_html__( 'Enable for %s', 'tab-return-notifier' ),
 								           esc_html( strtolower( $post_type->label ) )
 							           )
 						           ) .
@@ -133,8 +134,9 @@ class Wdevs_Tab_Notifier_Admin_View {
 							           'post_types',
 							           $options['post_types'][ $post_type->name ]['messages'] ?? [],
 							           $post_type->name,
+							           /* translators: %s: Post type name */
 							           sprintf(
-								           __( 'Leave messages empty to use default messages for %s', 'tab-return-notifier' ),
+								           esc_html__( 'Leave messages empty to use default messages for %s', 'tab-return-notifier' ),
 								           esc_html( strtolower( $post_type->label ) )
 							           )
 						           ) .
@@ -164,10 +166,11 @@ class Wdevs_Tab_Notifier_Admin_View {
 						           $this->render_checkbox_row(
 							           'taxonomies',
 							           $options['taxonomies'][ $taxonomy->name ]['enabled'] ?? false,
-							           __( 'Enabled', 'tab-return-notifier' ),
+							           esc_html__( 'Enabled', 'tab-return-notifier' ),
 							           $taxonomy->name,
+							           /* translators: %s: Taxonomy name */
 							           sprintf(
-								           __( 'Enable for %s', 'tab-return-notifier' ),
+								           esc_html__( 'Enable for %s', 'tab-return-notifier' ),
 								           esc_html( strtolower( $taxonomy->label ) )
 							           )
 						           ) .
@@ -175,8 +178,9 @@ class Wdevs_Tab_Notifier_Admin_View {
 							           'taxonomies',
 							           $options['taxonomies'][ $taxonomy->name ]['messages'] ?? [],
 							           $taxonomy->name,
+							           /* translators: %s: Taxonomy name */
 							           sprintf(
-								           __( 'Leave blank to use default messages for %s', 'tab-return-notifier' ),
+								           esc_html__( 'Leave blank to use default messages for %s', 'tab-return-notifier' ),
 								           esc_html( strtolower( $taxonomy->label ) )
 							           )
 						           ) .

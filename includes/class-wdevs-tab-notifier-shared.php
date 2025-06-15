@@ -64,7 +64,8 @@ class Wdevs_Tab_Notifier_Shared {
 			$shared_handle,
 			plugin_dir_url( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-shared.js',
 			$script_asset['dependencies'],
-			$script_asset['version']
+			$script_asset['version'],
+			true
 		);
 	}
 }

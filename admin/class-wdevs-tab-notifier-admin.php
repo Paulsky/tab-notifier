@@ -103,7 +103,8 @@ class Wdevs_Tab_Notifier_Admin {
 				$admin_handle,
 				plugin_dir_url( dirname( __FILE__ ) ) . 'build/wdevs-tab-notifier-admin.js',
 				array_merge( $script_asset['dependencies'], [ 'wdevs-tab-notifier-shared', 'jquery-ui-sortable' ] ),
-				$script_asset['version']
+				$script_asset['version'],
+				true
 			);
 
 			$messages = $this->get_messages_for_preview();
@@ -255,7 +256,7 @@ class Wdevs_Tab_Notifier_Admin {
 
 		if ( isset( $_POST['wdevs_tab_notifier_options'] ) && check_admin_referer( 'wdevs_tab_notifier_settings' ) ) {
 
-			$options = $_POST['wdevs_tab_notifier_options'] ?? array();
+			$options = isset($_POST['wdevs_tab_notifier_options']) ? wp_unslash($_POST['wdevs_tab_notifier_options']) : array();
 
 			update_option( 'wdevs_tab_notifier_options', $options );
 
