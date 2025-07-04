@@ -23,6 +23,9 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       tab-return-notifier
  * Domain Path:       /languages
+ * Tested up to:      6.8
+ * Requires PHP:      7.4
+ * Requires at least: 5.0
  */
 
 // If this file is called directly, abort.
@@ -79,4 +82,5 @@ function run_wdevs_tab_notifier() {
 	$plugin->run();
 
 }
+
 run_wdevs_tab_notifier();
