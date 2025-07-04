@@ -195,7 +195,7 @@ class Wdevs_Tab_Notifier_Admin_View {
 					<?php endforeach; ?>
                 </div>
             </div>
-            <emoji-picker style="display: none;" class="light"></emoji-picker>
+            <emoji-picker data-source="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'build/emoji-picker-element-data/en/emojibase/data.json'?>"  style="display: none;" class="light"></emoji-picker>
 		<?php endif; ?>
 		<?php
 	}
@@ -213,7 +213,7 @@ class Wdevs_Tab_Notifier_Admin_View {
             <div class="wtn-tab-preview">
                 <img id="wtn-tab-favicon" alt="Favicon" />
                 <span id="wtn-tab-title"></span>
-                <button class="wtn-tab-close">×</button>
+                <button type="button" class="wtn-tab-close">×</button>
             </div>
         </div>
 		<?php

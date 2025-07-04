@@ -1,5 +1,5 @@
 {
-	"name": "tab-return-notifier",
+	"name": "wdevs-tab-notifier",
 	"version": "1.0.0",
 	"description": "Bring visitors back to your site with animated tab notifications triggered when they switch to another browser tab.",
 	"author": "Wijnberg Developments",
@@ -23,9 +23,11 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.7.0"
+		"@wordpress/scripts": "^30.7.0",
+		"copy-webpack-plugin": "^13.0.0"
 	},
 	"dependencies": {
-		"emoji-picker-element": "^1.26.3"
+		"emoji-picker-element": "^1.26.3",
+		"emoji-picker-element-data": "^1.7.2"
 	}
 }

@@ -113,7 +113,7 @@ class Wdevs_Tab_Notifier {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-i18n.php';
 
 		/**
-		 * The class responsible for post types and taxonomies.
+		 * The class responsible for message variables.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wdevs-tab-notifier-variables.php';
 

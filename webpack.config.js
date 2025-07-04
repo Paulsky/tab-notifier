@@ -1,5 +1,6 @@
 const path = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 module.exports = {
 	...defaultConfig,
@@ -32,4 +33,15 @@ module.exports = {
 			},
 		},
 	},
+	plugins: [
+		...defaultConfig.plugins,
+		new CopyWebpackPlugin( {
+			patterns: [
+				{
+					from: 'node_modules/emoji-picker-element-data/en/emojibase/data.json',
+					to: 'emoji-picker-element-data/en/emojibase/[name][ext]',
+				},
+			],
+		} ),
+	],
 };
