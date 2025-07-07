@@ -90,8 +90,8 @@ class Wdevs_Tab_Notifier_Admin_View {
 				           $this->render_select_row( 'general', $options['general']['animation'] ?? 'rotating', esc_html__( 'Animation', 'tab-return-notifier' ), [
 					           'rotating'  => esc_html__( 'Rotating', 'tab-return-notifier' ),
 					           'scrolling' => esc_html__( 'Scrolling', 'tab-return-notifier' )
-				           ], 'animation', esc_html__( 'The animation of the messages', 'tab-return-notifier' )) .
-				           $this->render_number_row( 'general', $options['general']['speed'] ?? 500, esc_html__( 'Speed', 'tab-return-notifier' ), 'speed', esc_html__( 'Animation speed in milliseconds. Most browsers perform better with values of 500 or higher.', 'tab-return-notifier' )) .
+				           ], 'animation', esc_html__( 'The animation of the messages', 'tab-return-notifier' ) ) .
+				           $this->render_number_row( 'general', $options['general']['speed'] ?? 500, esc_html__( 'Speed', 'tab-return-notifier' ), 'speed', esc_html__( 'Animation speed in milliseconds. Most browsers perform better with values of 500 or higher.', 'tab-return-notifier' ) ) .
 				           $this->render_messages_row(
 					           'general',
 					           $options['general']['messages'] ?? [],
@@ -100,12 +100,12 @@ class Wdevs_Tab_Notifier_Admin_View {
 				           ) .
 				           '</tbody>' .
 				           '</table>';
-				echo $this->render_accordion_item(
+				echo wp_kses($this->render_accordion_item(
 					'general',
 					__( 'Settings', 'tab-return-notifier' ),
 					$content,
 					true
-				);
+				), self::get_allowed_tags());
 				?>
             </div>
         </div>
@@ -143,11 +143,11 @@ class Wdevs_Tab_Notifier_Admin_View {
 						           '</tbody>' .
 						           '</table>';
 
-						echo $this->render_accordion_item(
+						echo wp_kses($this->render_accordion_item(
 							$post_type->name,
 							$post_type->label,
 							$content
-						);
+						), self::get_allowed_tags());
 						?>
 					<?php endforeach; ?>
                 </div>
@@ -186,16 +186,18 @@ class Wdevs_Tab_Notifier_Admin_View {
 						           ) .
 						           '</tbody>' .
 						           '</table>';
-						echo $this->render_accordion_item(
+						echo wp_kses($this->render_accordion_item(
 							$taxonomy->name,
 							$taxonomy->label,
 							$content
-						);
+						), self::get_allowed_tags());
 						?>
 					<?php endforeach; ?>
                 </div>
             </div>
-            <emoji-picker data-source="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'build/emoji-picker-element-data/en/emojibase/data.json'?>"  style="display: none;" class="light"></emoji-picker>
+            <emoji-picker
+                    data-source="<?php echo esc_url(plugin_dir_url( dirname( __FILE__ ) ) . 'build/emoji-picker-element-data/en/emojibase/data.json') ?>"
+                    style="display: none;" class="light"></emoji-picker>
 		<?php endif; ?>
 		<?php
 	}
@@ -210,10 +212,10 @@ class Wdevs_Tab_Notifier_Admin_View {
         <p><?php esc_html_e( 'Please see the preview below. Note that only the general messages are displayed, and all variables are placeholder data.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
-            <div class="wtn-tab-preview">
-                <img id="wtn-tab-favicon" alt="Favicon" />
-                <span id="wtn-tab-title"></span>
-                <button type="button" class="wtn-tab-close">×</button>
+            <div class="wdtano-tab-preview">
+                <img id="wdtano-tab-favicon" alt="Favicon"/>
+                <span id="wdtano-tab-title"></span>
+                <button type="button" class="wdtano-tab-close">×</button>
             </div>
         </div>
 		<?php
@@ -244,7 +246,7 @@ class Wdevs_Tab_Notifier_Admin_View {
         </h4>
         <div id="health-check-accordion-block-<?php echo esc_attr( $name ); ?>"
              class="health-check-accordion-panel" <?php echo $expanded ? '' : 'hidden="hidden"'; ?>>
-			<?php echo $content; ?>
+			<?php echo wp_kses($content, self::get_allowed_tags()); ?>
             <div class="site-health-accordion-actions">
 				<?php submit_button(); ?>
             </div>
@@ -323,7 +325,7 @@ class Wdevs_Tab_Notifier_Admin_View {
                 <label for="<?php echo esc_attr( $field_id ); ?>"><?php esc_html_e( 'Messages', 'tab-return-notifier' ); ?></label>
             </th>
             <td>
-				<?php echo $this->render_messages_element( $field_name, $value, $description ); ?>
+				<?php echo wp_kses($this->render_messages_element( $field_name, $value, $description ), self::get_allowed_tags()); ?>
             </td>
         </tr>
 		<?php
@@ -344,17 +346,17 @@ class Wdevs_Tab_Notifier_Admin_View {
 	public function render_messages_element( string $field_name, array $messages = [], string $description = '' ): string {
 		ob_start();
 		?>
-        <div class="wtn-messages-wrapper">
-            <div class="wtn-messages-container">
+        <div class="wdtano-messages-wrapper">
+            <div class="wdtano-messages-container">
 				<?php if ( empty( $messages ) ) : ?>
-					<?php echo $this->render_message_input_group( $field_name ); ?>
+					<?php echo wp_kses($this->render_message_input_group( $field_name ), self::get_allowed_tags()); ?>
 				<?php else : ?>
 					<?php foreach ( $messages as $index => $message ) : ?>
-						<?php echo $this->render_message_input_group( $field_name, $message ); ?>
+						<?php echo wp_kses($this->render_message_input_group( $field_name, $message ), self::get_allowed_tags()); ?>
 					<?php endforeach; ?>
 				<?php endif; ?>
                 <button type="button"
-                        class="button wtn-add-message"><?php esc_html_e( 'Add another message', 'tab-return-notifier' ); ?></button>
+                        class="button wdtano-add-message"><?php esc_html_e( 'Add another message', 'tab-return-notifier' ); ?></button>
             </div>
 			<?php if ( $description ) : ?>
                 <p class="description"><?php echo wp_kses_post( $description ); ?></p>
@@ -375,25 +377,27 @@ class Wdevs_Tab_Notifier_Admin_View {
 	 *
 	 */
 	public function render_message_input_group( string $field_name, string $message = '' ): string {
-		$name_attribute    = $field_name . '[]';
-		$formatted_message = preg_replace( '/\{\{(.*?)\}\}/', '&ZeroWidthSpace;<code class="variable">{{$1}}</code>&ZeroWidthSpace;', esc_html( $message ) );
+		$name_attribute = $field_name . '[]';
+		//&#8203; ==&ZeroWidthSpace; But &ZeroWidthSpace; gets stripped by wp_kses
+		$formatted_message = preg_replace( '/\{\{(.*?)\}\}/', '&#8203;<code class="variable">{{$1}}</code>&#8203;', esc_html( $message ) );
 		ob_start();
 		?>
-        <div class="wtn-message-input-group">
-            <span type="button" class="wtn-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'tab-return-notifier'); ?>">
+        <div class="wdtano-message-input-group">
+            <span type="button" class="wdtano-drag-handle"
+                  aria-label="<?php esc_attr_e( 'Drag to reorder', 'tab-return-notifier' ); ?>">
                 <span class="dashicons dashicons-menu"></span>
             </span>
             <input type="hidden" name="<?php echo esc_attr( $name_attribute ); ?>"
                    value="<?php echo esc_attr( $message ); ?>">
-            <div class="wtn-editable-input" contenteditable="true"
-                 data-field-name="<?php echo esc_attr( $name_attribute ); ?>"><?php echo $formatted_message; ?></div>
-            <div class="wtn-input-group-actions button-group">
+            <div class="wdtano-editable-input" contenteditable="true"
+                 data-field-name="<?php echo esc_attr( $name_attribute ); ?>"><?php echo wp_kses($formatted_message, self::get_allowed_tags()); ?></div>
+            <div class="wdtano-input-group-actions button-group">
                 <button type="button"
-                        class="button wtn-insert-emoji"><?php esc_html_e( 'Insert emoji', 'tab-return-notifier' ); ?></button>
+                        class="button wdtano-insert-emoji"><?php esc_html_e( 'Insert emoji', 'tab-return-notifier' ); ?></button>
                 <button type="button"
-                        class="button wtn-insert-variable"><?php esc_html_e( 'Insert variable', 'tab-return-notifier' ); ?></button>
+                        class="button wdtano-insert-variable"><?php esc_html_e( 'Insert variable', 'tab-return-notifier' ); ?></button>
                 <button type="button"
-                        class="button wtn-remove-message"><?php esc_html_e( 'Remove', 'tab-return-notifier' ); ?></button>
+                        class="button wdtano-remove-message"><?php esc_html_e( 'Remove', 'tab-return-notifier' ); ?></button>
             </div>
         </div>
 		<?php
@@ -403,22 +407,23 @@ class Wdevs_Tab_Notifier_Admin_View {
 	/**
 	 * Render a select dropdown row.
 	 *
-	 * @param string $name         Field name prefix.
-	 * @param string $selected     Selected value.
-	 * @param string $label        Label text.
-	 * @param array  $options      Select options (value => label).
-	 * @param string $array_key    Optional array key for nested fields.
-	 * @param string $description  Optional description text.
-	 * @param bool   $multiple     Whether to allow multiple selections.
-	 * @since      1.0.0
+	 * @param string $name Field name prefix.
+	 * @param string $selected Selected value.
+	 * @param string $label Label text.
+	 * @param array $options Select options (value => label).
+	 * @param string $array_key Optional array key for nested fields.
+	 * @param string $description Optional description text.
+	 * @param bool $multiple Whether to allow multiple selections.
 	 *
 	 * @return string HTML for the select row.
+	 * @since      1.0.0
+	 *
 	 */
-	public function render_select_row(string $name, string $selected, string $label, array $options, string $array_key, string $description = '', bool $multiple = false): string {
-		$field_id = esc_attr($name) . (!empty($array_key) ? '_' . esc_attr($array_key) : '') . '_select';
-		$field_name = 'wdevs_tab_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
+	public function render_select_row( string $name, string $selected, string $label, array $options, string $array_key, string $description = '', bool $multiple = false ): string {
+		$field_id   = esc_attr( $name ) . ( ! empty( $array_key ) ? '_' . esc_attr( $array_key ) : '' ) . '_select';
+		$field_name = 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . ']';
 
-		if ($multiple) {
+		if ( $multiple ) {
 			$field_name .= '[]';
 		}
 
@@ -426,24 +431,24 @@ class Wdevs_Tab_Notifier_Admin_View {
 		?>
         <tr>
             <th scope="row">
-                <label for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($label); ?></label>
+                <label for="<?php echo esc_attr( $field_id ); ?>"><?php echo esc_html( $label ); ?></label>
             </th>
             <td>
-                <select name="<?php echo esc_attr($field_name); ?>" id="<?php echo esc_attr($field_id); ?>"
+                <select name="<?php echo esc_attr( $field_name ); ?>" id="<?php echo esc_attr( $field_id ); ?>"
 					<?php echo $multiple ? 'multiple' : ''; ?>>
-					<?php foreach ($options as $value => $option_label) : ?>
-                        <option value="<?php echo esc_attr($value); ?>"
+					<?php foreach ( $options as $value => $option_label ) : ?>
+                        <option value="<?php echo esc_attr( $value ); ?>"
 							<?php selected(
 								$multiple
-									? in_array($value, (array)$selected)
+									? in_array( $value, (array) $selected )
 									: $value === $selected
 							); ?>>
-							<?php echo esc_html($option_label); ?>
+							<?php echo esc_html( $option_label ); ?>
                         </option>
 					<?php endforeach; ?>
                 </select>
-				<?php if ($description) : ?>
-                    <p class="description"><?php echo wp_kses_post($description); ?></p>
+				<?php if ( $description ) : ?>
+                    <p class="description"><?php echo wp_kses_post( $description ); ?></p>
 				<?php endif; ?>
             </td>
         </tr>
@@ -454,35 +459,113 @@ class Wdevs_Tab_Notifier_Admin_View {
 	/**
 	 * Render a number input row.
 	 *
-	 * @param string $name         Field name prefix.
-	 * @param int    $value        Current value.
-	 * @param string $label        Label text.
-	 * @param string $array_key    Optional array key for nested fields.
-	 * @param string $description  Optional description text.
-	 * @since      1.0.0
+	 * @param string $name Field name prefix.
+	 * @param int $value Current value.
+	 * @param string $label Label text.
+	 * @param string $array_key Optional array key for nested fields.
+	 * @param string $description Optional description text.
 	 *
 	 * @return string HTML for the number input row.
+	 * @since      1.0.0
+	 *
 	 */
-	public function render_number_row(string $name, int $value, string $label, string $array_key, string $description = ''): string {
-		$field_id = esc_attr($name) . (!empty($array_key) ? '_' . esc_attr($array_key) : '') . '_number';
-		$field_name = 'wdevs_tab_notifier_options[' . esc_attr($name) . '][' . esc_attr($array_key) . ']';
+	public function render_number_row( string $name, int $value, string $label, string $array_key, string $description = '' ): string {
+		$field_id   = esc_attr( $name ) . ( ! empty( $array_key ) ? '_' . esc_attr( $array_key ) : '' ) . '_number';
+		$field_name = 'wdevs_tab_notifier_options[' . esc_attr( $name ) . '][' . esc_attr( $array_key ) . ']';
 
 		ob_start();
 		?>
         <tr>
             <th scope="row">
-                <label for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($label); ?></label>
+                <label for="<?php echo esc_attr( $field_id ); ?>"><?php echo esc_html( $label ); ?></label>
             </th>
             <td>
-                <input name="<?php echo esc_attr($field_name); ?>" type="number" id="<?php echo esc_attr($field_id); ?>"
-                       value="<?php echo esc_attr($value); ?>" min="1" />
-				<?php if ($description) : ?>
-                    <p class="description"><?php echo wp_kses_post($description); ?></p>
+                <input name="<?php echo esc_attr( $field_name ); ?>" type="number"
+                       id="<?php echo esc_attr( $field_id ); ?>"
+                       value="<?php echo esc_attr( $value ); ?>" min="1"/>
+				<?php if ( $description ) : ?>
+                    <p class="description"><?php echo wp_kses_post( $description ); ?></p>
 				<?php endif; ?>
             </td>
         </tr>
 		<?php
 		return ob_get_clean();
+	}
+
+	private static function get_allowed_tags() {
+		$allowed = wp_kses_allowed_html( 'post' );
+
+		$custom_allowed = [
+			'div'      => [
+				'id'              => true,
+				'class'           => true,
+				'aria-label'      => true,
+				'data-field-name' => true,
+				'contenteditable' => true,
+			],
+			'button'   => [
+				'type'       => true,
+				'class'      => true,
+				'aria-label' => true,
+			],
+			'input'    => [
+				'type'    => true,
+				'name'    => true,
+				'value'   => true,
+				'checked' => true,
+				'id'      => true,
+				'class'   => true,
+				'min'     => true,
+			],
+			'span'     => [
+				'type'       => true,
+				'class'      => true,
+				'aria-label' => true,
+			],
+			'table'    => [
+				'class' => true,
+				'role'  => true,
+			],
+			'tbody'    => true,
+			'tr'       => true,
+			'th'       => [
+				'scope' => true,
+			],
+			'td'       => true,
+			'fieldset' => true,
+			'legend'   => [
+				'class' => true,
+			],
+			'label'    => [
+				'for' => true,
+			],
+			'p'        => [
+				'class' => true,
+			],
+			'select'   => [
+				'name'     => true,
+				'id'       => true,
+				'multiple' => true,
+			],
+			'option'   => [
+				'value'    => true,
+				'selected' => true,
+			],
+			'code'     => [
+				'class' => true,
+			],
+		];
+
+		foreach ( $custom_allowed as $tag => $attributes ) {
+			if ( ! isset( $allowed[ $tag ] ) ) {
+				$allowed[ $tag ] = [];
+			}
+			if ( is_array( $attributes ) ) {
+				$allowed[ $tag ] = array_merge( $allowed[ $tag ], $attributes );
+			}
+		}
+
+		return $allowed;
 	}
 
 

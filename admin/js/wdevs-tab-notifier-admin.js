@@ -20,13 +20,13 @@ import jQuery from 'jquery';
 				}
 
 				let accordionStates = JSON.parse(
-					localStorage.getItem( 'wtnAccordionStates' ) || '{}'
+					localStorage.getItem( 'wdtanoAccordionStates' ) || '{}'
 				);
 
 				accordionStates[ accordionId ] = ! isExpanded;
 
 				localStorage.setItem(
-					'wtnAccordionStates',
+					'wdtanoAccordionStates',
 					JSON.stringify( accordionStates )
 				);
 			}
@@ -34,7 +34,7 @@ import jQuery from 'jquery';
 
 		function openAccordions() {
 			const savedStates = JSON.parse(
-				localStorage.getItem( 'wtnAccordionStates' ) || '{}'
+				localStorage.getItem( 'wdtanoAccordionStates' ) || '{}'
 			);
 
 			$( '.health-check-accordion-trigger' ).each( function () {

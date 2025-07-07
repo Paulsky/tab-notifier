@@ -4,7 +4,7 @@ import WtnAnimator from '../../includes/js/wdevs-tab-notifier-animator';
 	'use strict';
 
 	$( function () {
-		const viewConfig = window.wtnData || {
+		const viewConfig = window.wdtanoData || {
 			animation: 'rotating',
 			speed: 500,
 			messages: [],

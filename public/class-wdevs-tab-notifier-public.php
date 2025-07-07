@@ -90,7 +90,7 @@ class Wdevs_Tab_Notifier_Public {
 
 			wp_localize_script(
 				$public_handle,
-				'wtnData',
+				'wdtanoData',
 				array(
 					'animation'      => $options['general']['animation'],
 					'speed'          => $options['general']['speed'],
@@ -135,7 +135,7 @@ class Wdevs_Tab_Notifier_Public {
 			$enabled   = isset( $options['post_types'][ $post_type ] ) && ! empty( $options['post_types'][ $post_type ]['enabled'] );
 		}
 
-		return apply_filters( 'wtn_is_enabled_for_current_view', $enabled, $options );
+		return apply_filters( 'wdtano_is_enabled_for_current_view', $enabled, $options );
 	}
 
 	/**
@@ -174,11 +174,11 @@ class Wdevs_Tab_Notifier_Public {
 			}
 		}
 
-		$messages = apply_filters( 'wtn_get_messages_for_current_view', $messages, $options, $group );;
+		$messages = apply_filters( 'wdtano_get_messages_for_current_view', $messages, $options, $group );;
 
 		$translated_messages = $this->get_translations_for_messages($group, $messages);
 
-		return apply_filters( 'wtn_get_translated_messages_for_current_view', $translated_messages, $options, $group, $messages );
+		return apply_filters( 'wdtano_get_translated_messages_for_current_view', $translated_messages, $options, $group, $messages );
 	}
 
 	/**
@@ -207,7 +207,7 @@ class Wdevs_Tab_Notifier_Public {
 			$processed_messages[] = $message;
 		}
 
-		return apply_filters( 'wtn_get_processed_messages_for_current_view', $processed_messages, $templates, $variables );
+		return apply_filters( 'wdtano_get_processed_messages_for_current_view', $processed_messages, $templates, $variables );
 	}
 
 	/**

@@ -20,7 +20,7 @@
 
 /*end settings*/
 /*begin preview*/
-.wtn-tab-preview {
+.wdtano-tab-preview {
     display: flex;
     align-items: center;
     background: #e0e0e0;
@@ -32,13 +32,13 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.wtn-tab-preview img {
+.wdtano-tab-preview img {
     width: 16px;
     height: 16px;
     margin-right: 8px;
 }
 
-.wtn-tab-preview span {
+.wdtano-tab-preview span {
     font-size: 14px;
     color: #333;
     white-space: nowrap;
@@ -50,7 +50,7 @@
     width: 285px;
 }
 
-.wtn-tab-close {
+.wdtano-tab-close {
     background: transparent;
     border: none;
     color: #666;
@@ -63,7 +63,7 @@
     margin-left: auto;
 }
 
-.wtn-tab-close:hover {
+.wdtano-tab-close:hover {
     opacity: 1;
     color: #000;
 }

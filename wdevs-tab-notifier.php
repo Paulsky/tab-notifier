@@ -44,7 +44,7 @@ define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.0.0' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wdevs-tab-notifier-activator.php
  */
-function activate_wdevs_tab_notifier() {
+function wdevs_tab_notifier_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wdevs-tab-notifier-activator.php';
 	Wdevs_Tab_Notifier_Activator::activate();
 }
@@ -53,13 +53,13 @@ function activate_wdevs_tab_notifier() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-wdevs-tab-notifier-deactivator.php
  */
-function deactivate_wdevs_tab_notifier() {
+function wdevs_tab_notifier_deactivate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wdevs-tab-notifier-deactivator.php';
 	Wdevs_Tab_Notifier_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_wdevs_tab_notifier' );
-register_deactivation_hook( __FILE__, 'deactivate_wdevs_tab_notifier' );
+register_activation_hook( __FILE__, 'wdevs_tab_notifier_activate' );
+register_deactivation_hook( __FILE__, 'wdevs_tab_notifier_deactivate' );
 
 /**
  * The core plugin class that is used to define internationalization,

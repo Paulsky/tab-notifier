@@ -56,7 +56,7 @@ class Wdevs_Tab_Notifier_Variables {
 			return strcmp( $a['label'], $b['label'] );
 		} );
 
-		return apply_filters( 'wtn_get_variables', $variables );
+		return apply_filters( 'wdtano_get_variables', $variables );
 	}
 
 	/**
@@ -123,8 +123,9 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_recently_viewed_product_name() {
-		$viewed_products   = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array();
-		$viewed_product_id = end( $viewed_products );
+		$viewed_products_raw = isset( $_COOKIE['woocommerce_recently_viewed'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : '';
+		$viewed_products_ids = array_filter( explode( '|', $viewed_products_raw ), 'is_numeric' );
+		$viewed_product_id   = end( $viewed_products_ids );
 
 		if ( ! empty( $viewed_product_id ) && is_numeric( $viewed_product_id ) ) {
 			$product = wc_get_product( (int) $viewed_product_id );

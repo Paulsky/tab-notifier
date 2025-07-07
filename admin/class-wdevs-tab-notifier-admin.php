@@ -112,7 +112,7 @@ class Wdevs_Tab_Notifier_Admin {
 
 			wp_localize_script(
 				$admin_handle,
-				'wtnData',
+				'wdtanoData',
 				array(
 					'variables' => Wdevs_Tab_Notifier_Variables::get_variables(),
 					'animation' => $options['general']['animation'],
@@ -129,6 +129,10 @@ class Wdevs_Tab_Notifier_Admin {
 	 * @since    1.0.0
 	 */
 	public function add_admin_menu() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		add_options_page(
 			__( 'Tab Return Notifier Settings', 'tab-return-notifier' ),
 			__( 'Tab Return Notifier', 'tab-return-notifier' ),
@@ -145,7 +149,7 @@ class Wdevs_Tab_Notifier_Admin {
 	 * @since    1.0.0
 	 */
 	public function is_settings_page() {
-		return ( is_admin() && isset( $_GET['page'] ) && $_GET['page'] === 'tab-return-notifier' );
+		return ( is_admin() && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) === 'tab-return-notifier' );
 	}
 
 	/**
@@ -159,7 +163,7 @@ class Wdevs_Tab_Notifier_Admin {
 			'wdevs_tab_notifier_options',
 			array(
 				'default'           => $this->get_default_settings(),
-				'sanitize_callback' => array( $this, 'sanitize_settings' )
+				//'sanitize_callback' => array( $this, 'sanitize_settings' )
 			)
 		);
 	}
@@ -180,13 +184,13 @@ class Wdevs_Tab_Notifier_Admin {
 		}
 
 		if ( isset( $input['general'] ) ) {
+			$animation = isset( $input['general']['animation'] ) ? sanitize_key( $input['general']['animation'] ) : 'rotating';
+
 			$output['general']['enabled']   = ! empty( $input['general']['enabled'] );
-			$output['general']['animation'] = in_array( $input['general']['animation'], array(
+			$output['general']['animation'] = in_array( $animation, array(
 				'rotating',
 				'scrolling'
-			) )
-				? $input['general']['animation']
-				: 'rotating';
+			), true ) ? $animation : 'rotating';
 			$output['general']['speed']     = absint( $input['general']['speed'] );
 			$output['general']['messages']  = $this->sanitize_messages( $input['general']['messages'] );
 			$this->register_translations_for_messages( 'general_messages', $output['general']['messages'] );
@@ -254,11 +258,12 @@ class Wdevs_Tab_Notifier_Admin {
 		$post_types = $this->get_public_post_types( 'objects' );
 		$taxonomies = $this->get_public_taxonomies( 'objects' );
 
-		if ( isset( $_POST['wdevs_tab_notifier_options'] ) && check_admin_referer( 'wdevs_tab_notifier_settings' ) ) {
+		if ( isset( $_POST['wdevs_tab_notifier_options'] ) && current_user_can( 'manage_options' ) && check_admin_referer( 'wdevs_tab_notifier_settings' ) ) {
+			//$this->sanitize_settings CAN be called by 'sanitize_callback' => array( $this, 'sanitize_settings' ) in register_settings
+			//But for readability we use this:
+			$raw_options = $this->sanitize_settings( wp_unslash($_POST['wdevs_tab_notifier_options']) );
 
-			$options = isset($_POST['wdevs_tab_notifier_options']) ? wp_unslash($_POST['wdevs_tab_notifier_options']) : array();
-
-			update_option( 'wdevs_tab_notifier_options', $options );
+			update_option( 'wdevs_tab_notifier_options', $raw_options );
 
 			add_settings_error(
 				'wdevs_tab_notifier_messages',
@@ -296,9 +301,9 @@ class Wdevs_Tab_Notifier_Admin {
 			return;
 		}
 
-		foreach ($messages as $index => $message) {
+		foreach ( $messages as $index => $message ) {
 			$name = $group_name . '_' . $index;
-			$this->register_translation($name, $message);
+			$this->register_translation( $name, $message );
 		}
 	}
 }

@@ -7,7 +7,7 @@ import 'emoji-picker-element';
 	const WtnElements = {
 		settings: {
 			variables: [],
-			menuSelector: '#wtn-variable-menu',
+			menuSelector: '#wdtano-variable-menu',
 			emojiPickerSelector: 'emoji-picker',
 		},
 
@@ -21,15 +21,15 @@ import 'emoji-picker-element';
 
 		getVariables() {
 			const formatted = [];
-			if ( typeof window.wtnData === 'undefined' ) {
+			if ( typeof window.wdtanoData === 'undefined' ) {
 				return formatted;
 			}
 
-			if ( ! window.wtnData.variables ) {
+			if ( ! window.wdtanoData.variables ) {
 				return formatted;
 			}
 
-			const variables = window.wtnData.variables;
+			const variables = window.wdtanoData.variables;
 
 			for ( const [ key, data ] of Object.entries( variables ) ) {
 				formatted.push( {
@@ -46,7 +46,7 @@ import 'emoji-picker-element';
 			if ( $( this.settings.menuSelector ).length > 0 ) return;
 
 			const $menu = $( '<div>', {
-				id: 'wtn-variable-menu',
+				id: 'wdtano-variable-menu',
 				css: {
 					display: 'none',
 					position: 'absolute',
@@ -59,7 +59,7 @@ import 'emoji-picker-element';
 				$( '<li>', {
 					text: variable.label,
 					'data-variable': variable.key,
-					class: 'wtn-variable-menu-item',
+					class: 'wdtano-variable-menu-item',
 				} ).appendTo( $ul );
 			} );
 
@@ -86,28 +86,28 @@ import 'emoji-picker-element';
 		setupEventHandlers: function () {
 			$( document ).on(
 				'mouseup keyup',
-				'.wtn-editable-input',
+				'.wdtano-editable-input',
 				this.handleSelectionChange.bind( this )
 			);
 			$( document ).on(
 				'click',
-				'.wtn-insert-variable',
+				'.wdtano-insert-variable',
 				this.handleVariableButtonClick.bind( this )
 			);
 			$( document ).on(
 				'click',
-				'.wtn-insert-emoji',
+				'.wdtano-insert-emoji',
 				this.handleEmojiButtonClick.bind( this )
 			);
 			$( document ).on( 'click', this.handleOutsideClick.bind( this ) );
 			$( document ).on(
 				'click',
-				'.wtn-editable-input .variable',
+				'.wdtano-editable-input .variable',
 				this.handleVariableClick.bind( this )
 			);
 			$( document ).on(
 				'keydown',
-				'.wtn-editable-input',
+				'.wdtano-editable-input',
 				this.handleKeyEvents.bind( this )
 			);
 
@@ -128,9 +128,9 @@ import 'emoji-picker-element';
 				);
 			}
 
-			$( '.wtn-messages-container' ).on(
+			$( '.wdtano-messages-container' ).on(
 				'input blur',
-				'.wtn-editable-input',
+				'.wdtano-editable-input',
 				this.handleInputChange.bind( this )
 			);
 		},
@@ -175,8 +175,9 @@ import 'emoji-picker-element';
 			const isPickerClick =
 				$target.closest( this.settings.emojiPickerSelector ).length > 0;
 			const isTriggerClick =
-				$target.closest( '.wtn-insert-variable, .wtn-insert-emoji' )
-					.length > 0;
+				$target.closest(
+					'.wdtano-insert-variable, .wdtano-insert-emoji'
+				).length > 0;
 
 			if ( ! isMenuClick && ! isPickerClick && ! isTriggerClick ) {
 				this.hideMenu();
@@ -302,8 +303,8 @@ import 'emoji-picker-element';
 		},
 
 		showElementAtCaret: function ( $button, event, $element ) {
-			const $group = $button.closest( '.wtn-message-input-group' );
-			const $editable = $group.find( '.wtn-editable-input' );
+			const $group = $button.closest( '.wdtano-message-input-group' );
+			const $editable = $group.find( '.wdtano-editable-input' );
 			$editable.focus();
 
 			if ( this.lastRange ) {
@@ -383,7 +384,7 @@ import 'emoji-picker-element';
 			selection.addRange( newRange );
 			this.lastRange = newRange.cloneRange();
 
-			$( code ).closest( '.wtn-editable-input' ).trigger( 'input' );
+			$( code ).closest( '.wdtano-editable-input' ).trigger( 'input' );
 		},
 
 		selectVariable: function ( variableElement ) {
@@ -413,7 +414,9 @@ import 'emoji-picker-element';
 			selection.addRange( newRange );
 			this.lastRange = newRange.cloneRange();
 
-			$( textNode ).closest( '.wtn-editable-input' ).trigger( 'input' );
+			$( textNode )
+				.closest( '.wdtano-editable-input' )
+				.trigger( 'input' );
 		},
 	};
 
@@ -421,50 +424,50 @@ import 'emoji-picker-element';
 		WtnElements.init();
 
 		$( document ).ready( function () {
-			$( '.wtn-messages-container' ).sortable( {
-				items: '> .wtn-message-input-group',
-				handle: '.wtn-drag-handle',
+			$( '.wdtano-messages-container' ).sortable( {
+				items: '> .wdtano-message-input-group',
+				handle: '.wdtano-drag-handle',
 				axis: 'y',
 			} );
 		} );
 
 		// Add new message field
-		$( '.wtn-messages-container' ).on(
+		$( '.wdtano-messages-container' ).on(
 			'click',
-			'.wtn-add-message',
+			'.wdtano-add-message',
 			function () {
 				const container = $( this ).closest(
-					'.wtn-messages-container'
+					'.wdtano-messages-container'
 				);
 				const newGroup = container
-					.find( '.wtn-message-input-group' )
+					.find( '.wdtano-message-input-group' )
 					.first()
 					.clone();
 				newGroup.find( 'input' ).val( '' );
-				newGroup.find( '.wtn-editable-input' ).html( '' );
-				container.find( '.wtn-add-message' ).before( newGroup );
+				newGroup.find( '.wdtano-editable-input' ).html( '' );
+				container.find( '.wdtano-add-message' ).before( newGroup );
 			}
 		);
 
 		// Remove message field
-		$( '.wtn-messages-container' ).on(
+		$( '.wdtano-messages-container' ).on(
 			'click',
-			'.wtn-remove-message',
+			'.wdtano-remove-message',
 			function () {
 				const container = $( this ).closest(
-					'.wtn-messages-container'
+					'.wdtano-messages-container'
 				);
-				const groups = container.find( '.wtn-message-input-group' );
+				const groups = container.find( '.wdtano-message-input-group' );
 				if ( groups.length > 1 ) {
-					$( this ).closest( '.wtn-message-input-group' ).remove();
+					$( this ).closest( '.wdtano-message-input-group' ).remove();
 				} else {
 					$( this )
-						.closest( '.wtn-message-input-group' )
+						.closest( '.wdtano-message-input-group' )
 						.find( 'input' )
 						.val( '' );
 					$( this )
-						.closest( '.wtn-message-input-group' )
-						.find( '.wtn-editable-input' )
+						.closest( '.wdtano-message-input-group' )
+						.find( '.wdtano-editable-input' )
 						.html( '' );
 				}
 			}

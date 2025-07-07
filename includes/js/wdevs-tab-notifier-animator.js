@@ -98,7 +98,7 @@ class WtnAnimator {
 		if ( ! this.settings.preview ) {
 			document.title = message;
 		} else {
-			const titleElement = document.getElementById( 'wtn-tab-title' );
+			const titleElement = document.getElementById( 'wdtano-tab-title' );
 			if ( titleElement ) {
 				titleElement.textContent = message;
 			}
