@@ -52,6 +52,15 @@ To translate the messages via WPML:
 1. Save your options first in: Settings > Tab Return Notifier
 2. Then translate the texts in: WPML -> String Translations and search for your messages in the domain 'tab-return-notifier'
 
+=== Source code ===
+The uncompiled source code of this plugin is available at:
+[GitHub Repository](https://github.com/Paulsky/tab-notifier)
+
+=== Build instructions ===
+To build the production-ready files, run:
+
+1. npm install
+2. npm run build
 
 == Installation ==
 
