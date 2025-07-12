@@ -53,7 +53,7 @@ Configure these plugin-specific settings:
     
 #### Optional: WooCommerce settings
 
-If you would like to use the `{{recently_viewed}}` variable, you need the "Recently Viewed Products" widget to be active on the frontend. This has to do with the internal WooCommerce cookies. [Please see this page](https://woocommerce.com/document/woocommerce-widgets/)*.
+If you would like to use the `{{recently_viewed}}` variable, you need the "Recently Viewed Products" widget to be active on the frontend. This has to do with the internal WooCommerce cookies. [Please see this page](https://woocommerce.com/document/woocommerce-widgets/).
 
 ### Usage
 
