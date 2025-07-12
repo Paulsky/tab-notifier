@@ -63,7 +63,7 @@ After configuration, and you have enabled the notifier in the settings, the plug
 #### WordPress filters
 
 `wdtano_is_enabled_for_current_view`
-*Override the enabled status for current view*
+*Enabled/disable the notifier for a specific post/page*
 
 ```php
 apply_filters( 'wdtano_is_enabled_for_current_view', $enabled, $options )
