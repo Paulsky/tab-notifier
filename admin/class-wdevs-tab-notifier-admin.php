@@ -162,7 +162,7 @@ class Wdevs_Tab_Notifier_Admin {
 			'wdevs_tab_notifier_settings',
 			'wdevs_tab_notifier_options',
 			array(
-				'default' => $this->get_default_settings(),
+				'default'           => $this->get_default_settings(),
 				'sanitize_callback' => array( $this, 'sanitize_settings' )
 			)
 		);
@@ -259,8 +259,9 @@ class Wdevs_Tab_Notifier_Admin {
 		$taxonomies = $this->get_public_taxonomies( 'objects' );
 
 		if ( isset( $_POST['wdevs_tab_notifier_options'] ) && current_user_can( 'manage_options' ) && check_admin_referer( 'wdevs_tab_notifier_settings' ) ) {
-			//$options getting sanitized by callback: by 'sanitize_callback' => array( $this, 'sanitize_settings' ) in register_settings
-			update_option( 'wdevs_tab_notifier_options', $options );
+			$raw_options = wp_unslash( $_POST['wdevs_tab_notifier_options'] );
+			// Pass raw (unsanitized) data to update_option, relying on the registered sanitize_callback
+			update_option( 'wdevs_tab_notifier_options', $raw_options );
 
 			add_settings_error(
 				'wdevs_tab_notifier_messages',
@@ -268,6 +269,8 @@ class Wdevs_Tab_Notifier_Admin {
 				__( 'Settings saved', 'tab-return-notifier' ),
 				'updated'
 			);
+
+			$options = get_option( 'wdevs_tab_notifier_options', $this->get_default_settings() );
 		}
 
 		$this->admin_view->render_settings_page( $active_tab, $options, $post_types, $taxonomies );
