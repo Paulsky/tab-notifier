@@ -56,6 +56,16 @@ class Wdevs_Tab_Notifier_Admin_View {
 					<?php $this->render_preview_tab(); ?>
 				<?php endif; ?>
             </form>
+            <div class="wdtano-footer">
+                <?php
+                $text = sprintf(
+                /* translators: %s: Link to author site. */
+	                __( 'Tab Return Notifier is developed by %s. Your trusted WordPress & WooCommerce plugin partner from the Netherlands.', 'tab-return-notifier' ),
+	                '<a href="https://products.wijnberg.dev" target="_blank" rel="noopener">Wijnberg Developments</a>'
+                );
+                echo wp_kses_post($text);
+                ?>
+            </div>
         </div>
 		<?php
 	}
