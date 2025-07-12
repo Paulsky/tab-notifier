@@ -1,0 +1,6 @@
+# Changelog
+All notable changes to the Tab Return Notifier plugin will be documented in this file.
+
+## [1.0.0] - 2025-07-12
+### Added
+- Initial release of Tab Return Notifier plugin.
