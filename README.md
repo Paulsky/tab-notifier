@@ -2,7 +2,7 @@
 
 Tab Return Notifier is a lightweight plugin that helps bring users back to your site when they switch to another browser tab. When a visitor navigates away, the plugin dynamically updates the tab title with attention-grabbing messages and animations.
 
-<img src="https://github.com/user-attachments/assets/c5f427d3-55e2-4a6b-958a-c106c948caa8" width="300" alt="Tab Return Notifier demo" style="max-width: 300px !important; height: auto !important;" />
+<img src="https://github.com/user-attachments/assets/c5f427d3-55e2-4a6b-958a-c106c948caa8" width="800" alt="Tab Return Notifier demo" style="max-width: 100% !important; height: auto !important;" />
 <br/>
 <br/>
 
