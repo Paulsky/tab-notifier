@@ -12,14 +12,15 @@ import WtnAnimator from '../../includes/js/wdevs-tab-notifier-animator';
 		};
 
 		const faviconHolder = document.getElementById( 'wdtano-tab-favicon' );
-		if ( faviconHolder ) {
+		if (
+			faviconHolder &&
+			( ! faviconHolder.src || faviconHolder.src === '' )
+		) {
 			const favicon = document.querySelector( 'link[rel~="icon"]' );
 			if ( favicon ) {
-				const faviconImage = favicon ? favicon.href : null;
-
-				if ( faviconImage ) {
-					faviconHolder.src = favicon;
-				}
+				faviconHolder.src = favicon?.length
+					? favicon[ 0 ].href
+					: favicon?.href;
 			}
 		}
 

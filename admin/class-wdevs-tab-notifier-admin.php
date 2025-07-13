@@ -277,6 +277,19 @@ class Wdevs_Tab_Notifier_Admin {
 	}
 
 	/**
+	 * @since 1.1.0
+	 */
+	public function add_action_links( $actions ) {
+		$links = array(
+			'<a href="' . admin_url( 'admin.php?page=tab-return-notifier' ) . '">' . __( 'Settings' ) . '</a>', //Yes, just use WordPress text domain
+		);
+
+		$actions = array_merge( $actions, $links );
+
+		return $actions;
+	}
+
+	/**
 	 * Get messages for preview in admin area.
 	 *
 	 * @return array Array of messages for preview

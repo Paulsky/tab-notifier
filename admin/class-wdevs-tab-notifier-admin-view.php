@@ -217,13 +217,14 @@ class Wdevs_Tab_Notifier_Admin_View {
 	 * @since      1.0.0
 	 */
 	protected function render_preview_tab(): void {
+		$favicon_url = get_site_icon_url();
 		?>
         <h2><?php esc_html_e( 'Preview', 'tab-return-notifier' ); ?></h2>
         <p><?php esc_html_e( 'Please see the preview below. Note that only the general messages are displayed, and all variables are placeholder data.', 'tab-return-notifier' ); ?></p>
 
         <div class="site-health-issues-wrapper">
             <div class="wdtano-tab-preview">
-                <img id="wdtano-tab-favicon" alt="Favicon"/>
+                <img id="wdtano-tab-favicon" alt="Favicon" src="<?php echo esc_url($favicon_url); ?>"/>
                 <span id="wdtano-tab-title"></span>
                 <button type="button" class="wdtano-tab-close">×</button>
             </div>
