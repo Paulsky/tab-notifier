@@ -26,6 +26,8 @@ Tab Return Notifier is a lightweight plugin that helps bring users back to your 
 
 Perfect for e-commerce sites, blogs, and any website that wants to reduce bounce rates and bring users back to their content. Tab Return Notifier is a smart tab title changer that helps turn passive browsing into active engagement. This browser tab notifier uses subtle page title animations to recapture attention when customers switch tabs. Ideal for highlighting limited-time offers, new content, or abandoned carts, it serves as an effective attention grabber across all modern browsers. Suitable for publishers, e-commerce sites, and marketers looking to reduce tab abandonment and increase time-on-site.
 
+For more information about this plugin, please visit the [plugin page](https://products.wijnberg.dev/product/wordpress/plugins/tab-return-notifier/).
+
 === Dynamic variables ===
 
 The plugin supports dynamic variables that automatically insert relevant content into your messages. These can be used in both the main message and the specific content types message fields.
@@ -68,6 +70,9 @@ To translate the messages via WPML:
 = 1.0.0 =
 * Initial release
 
+== Additional Information ==
+
+For more information and other WordPress plugins, visit [Wijnberg Developments](https://products.wijnberg.dev/product-category/wordpress/plugins/).
 
 == Screenshots ==
 
