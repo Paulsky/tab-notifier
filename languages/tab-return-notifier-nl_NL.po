@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tab Return Notifier\n"
-"POT-Creation-Date: 2025-07-12 17:41+0200\n"
-"PO-Revision-Date: 2025-07-12 17:42+0200\n"
+"POT-Creation-Date: 2025-07-15 11:30+0200\n"
+"PO-Revision-Date: 2025-07-15 11:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -22,28 +22,33 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #. Plugin Name of the plugin/theme
-#: admin/class-wdevs-tab-notifier-admin-view.php:26
+#: admin/class-wdevs-tab-notifier-admin-view.php:27
 #: admin/class-wdevs-tab-notifier-admin.php:138
 msgid "Tab Return Notifier"
 msgstr "Tab Terugkeer Notificaties"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:32
+#: admin/class-wdevs-tab-notifier-admin-view.php:33
 msgid "Secondary menu"
 msgstr "Tweede menu"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:35
-#: admin/class-wdevs-tab-notifier-admin-view.php:84
-#: admin/class-wdevs-tab-notifier-admin-view.php:115
+#: admin/class-wdevs-tab-notifier-admin-view.php:36
+#: admin/class-wdevs-tab-notifier-admin-view.php:97
+#: admin/class-wdevs-tab-notifier-admin-view.php:128
+#: admin/class-wdevs-tab-notifier-admin.php:284
 msgid "Settings"
 msgstr "Instellingen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:39
-#: admin/class-wdevs-tab-notifier-admin-view.php:221
+#: admin/class-wdevs-tab-notifier-admin-view.php:40
+#: admin/class-wdevs-tab-notifier-admin-view.php:235
 msgid "Preview"
 msgstr "Voorvertoning"
 
+#: admin/class-wdevs-tab-notifier-admin-view.php:43
+msgid "Documentation"
+msgstr "Documentatie"
+
 #. translators: %s: Link to author site.
-#: admin/class-wdevs-tab-notifier-admin-view.php:63
+#: admin/class-wdevs-tab-notifier-admin-view.php:76
 #, php-format
 msgid ""
 "Tab Return Notifier is developed by %s. Your trusted WordPress & WooCommerce "
@@ -52,45 +57,45 @@ msgstr ""
 "Tab Return Notifier is ontwikkeld door %s. Uw betrouwbare WordPress & "
 "WooCommerce pluginpartner uit Nederland."
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:85
+#: admin/class-wdevs-tab-notifier-admin-view.php:98
 msgid "Configure the notification settings."
 msgstr "Configureer de notificatie instellingen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:88
+#: admin/class-wdevs-tab-notifier-admin-view.php:101
 msgid "Global settings"
 msgstr "Globale instellingen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:96
-#: admin/class-wdevs-tab-notifier-admin-view.php:135
-#: admin/class-wdevs-tab-notifier-admin-view.php:179
+#: admin/class-wdevs-tab-notifier-admin-view.php:109
+#: admin/class-wdevs-tab-notifier-admin-view.php:148
+#: admin/class-wdevs-tab-notifier-admin-view.php:192
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:98
+#: admin/class-wdevs-tab-notifier-admin-view.php:111
 msgid "Enable messages"
 msgstr "Schakel berichten in"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:100
+#: admin/class-wdevs-tab-notifier-admin-view.php:113
 msgid "Animation"
 msgstr "Animatie"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:101
+#: admin/class-wdevs-tab-notifier-admin-view.php:114
 msgid "Rotating"
 msgstr "Roterend"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:102
+#: admin/class-wdevs-tab-notifier-admin-view.php:115
 msgid "Scrolling"
 msgstr "Scrollend"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:103
+#: admin/class-wdevs-tab-notifier-admin-view.php:116
 msgid "The animation of the messages"
 msgstr "De animatie van de berichten"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:104
+#: admin/class-wdevs-tab-notifier-admin-view.php:117
 msgid "Speed"
 msgstr "Snelheid"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:104
+#: admin/class-wdevs-tab-notifier-admin-view.php:117
 msgid ""
 "Animation speed in milliseconds. Most browsers perform better with values of "
 "500 or higher."
@@ -98,39 +103,39 @@ msgstr ""
 "Animatiesnelheid in milliseconden. De meeste browsers presteren beter met "
 "waarden van 500 of hoger."
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:125
+#: admin/class-wdevs-tab-notifier-admin-view.php:138
 msgid "Post types"
 msgstr "Berichttypen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:126
+#: admin/class-wdevs-tab-notifier-admin-view.php:139
 msgid "Configure notifications for specific post types."
 msgstr "Configureer meldingen voor specifieke berichttypen."
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:139
-#: admin/class-wdevs-tab-notifier-admin-view.php:183
+#: admin/class-wdevs-tab-notifier-admin-view.php:152
+#: admin/class-wdevs-tab-notifier-admin-view.php:196
 #, php-format
 msgid "Enable for %s"
 msgstr "Inschakelen voor %s"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:149
+#: admin/class-wdevs-tab-notifier-admin-view.php:162
 #, php-format
 msgid "Leave messages empty to use default messages for %s"
 msgstr "Laat berichten leeg om standaardberichten voor %s te gebruiken"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:169
+#: admin/class-wdevs-tab-notifier-admin-view.php:182
 msgid "Taxonomies"
 msgstr "Taxonomieën"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:170
+#: admin/class-wdevs-tab-notifier-admin-view.php:183
 msgid "Configure notifications for specific taxonomies."
 msgstr "Configureer meldingen voor specifieke taxonomieën."
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:193
+#: admin/class-wdevs-tab-notifier-admin-view.php:206
 #, php-format
 msgid "Leave blank to use default messages for %s"
 msgstr "Laat leeg om standaardberichten voor %s te gebruiken"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:222
+#: admin/class-wdevs-tab-notifier-admin-view.php:236
 msgid ""
 "Please see the preview below. Note that only the general messages are "
 "displayed, and all variables are placeholder data."
@@ -138,27 +143,27 @@ msgstr ""
 "Bekijk de preview hieronder. Let op: alleen de algemene berichten worden "
 "weergegeven en alle variabelen zijn tijdelijke placeholders."
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:335
+#: admin/class-wdevs-tab-notifier-admin-view.php:349
 msgid "Messages"
 msgstr "Berichten"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:369
+#: admin/class-wdevs-tab-notifier-admin-view.php:383
 msgid "Add another message"
 msgstr "Voeg nog een bericht toe"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:397
+#: admin/class-wdevs-tab-notifier-admin-view.php:411
 msgid "Drag to reorder"
 msgstr "Versleep om opnieuw te ordenen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:406
+#: admin/class-wdevs-tab-notifier-admin-view.php:420
 msgid "Insert emoji"
 msgstr "Emoji invoegen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:408
+#: admin/class-wdevs-tab-notifier-admin-view.php:422
 msgid "Insert variable"
 msgstr "Variabele invoegen"
 
-#: admin/class-wdevs-tab-notifier-admin-view.php:410
+#: admin/class-wdevs-tab-notifier-admin-view.php:424
 msgid "Remove"
 msgstr "Verwijderen"
 

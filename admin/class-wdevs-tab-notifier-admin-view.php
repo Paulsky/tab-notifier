@@ -20,6 +20,7 @@ class Wdevs_Tab_Notifier_Admin_View {
 	 * @since      1.0.0
 	 */
 	public function render_settings_page( string $active_tab, array $options, array $post_types, array $taxonomies ): void {
+		$documentationURL = 'https://products.wijnberg.dev/product/wordpress/plugins/tab-return-notifier/#docs_tab';
 		?>
         <div class="health-check-header">
             <div class="health-check-title-section">
@@ -28,7 +29,7 @@ class Wdevs_Tab_Notifier_Admin_View {
 
             <div class="health-check-title-section site-health-progress-wrapper hide-if-no-js orange"></div>
 
-            <nav class="health-check-tabs-wrapper hide-if-no-js tab-count-2"
+            <nav class="health-check-tabs-wrapper hide-if-no-js tab-count-3"
                  aria-label="<?php esc_attr_e( 'Secondary menu', 'tab-return-notifier' ); ?>">
                 <a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"
                    class="health-check-tab <?php echo $active_tab === 'settings' ? 'active' : ''; ?>">
@@ -37,6 +38,18 @@ class Wdevs_Tab_Notifier_Admin_View {
                 <a href="<?php echo esc_url( add_query_arg( 'tab', 'preview' ) ); ?>"
                    class="health-check-tab <?php echo $active_tab === 'preview' ? 'active' : ''; ?>">
 					<?php esc_html_e( 'Preview', 'tab-return-notifier' ); ?>
+                </a>
+                <a href="<?php echo esc_url( $documentationURL ); ?>" target="_blank"  class="health-check-tab">
+		            <?php esc_html_e( 'Documentation', 'tab-return-notifier' ); ?>
+                    <svg style="width: 0.8rem; height: 0.8rem; stroke: currentColor; fill: none;"
+                         xmlns="http://www.w3.org/2000/svg"
+                         stroke-width="10" stroke-dashoffset="0"
+                         stroke-dasharray="0" stroke-linecap="round"
+                         stroke-linejoin="round" viewBox="0 0 100 100">
+                        <polyline fill="none" points="40 20 20 20 20 90 80 90 80 60"/>
+                        <polyline fill="none" points="60 10 90 10 90 40"/>
+                        <line fill="none" x1="89" y1="11" x2="50" y2="50"/>
+                    </svg>
                 </a>
             </nav>
         </div>

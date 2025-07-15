@@ -16,7 +16,7 @@
  * Plugin Name:       Tab Return Notifier
  * Plugin URI:        https://products.wijnberg.dev
  * Description:       Bring visitors back to your site with animated tab notifications triggered when they switch to another browser tab.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Wijnberg Developments
  * Author URI:        https://wijnberg.dev/
  * License:           GPL-2.0+
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.1.0' );
+define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.2.0' );
 
 /**
  * The code that runs during plugin activation.
