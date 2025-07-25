@@ -3,7 +3,7 @@ Contributors: wijnbergdevelopments
 Tags: browser tab, notifications, user engagement
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ Tab Return Notifier is a lightweight plugin that helps bring users back to your 
 
 - Global notification messages that appear when users switch to another tab
 - Per-post type and taxonomy override options
-- Built-in emoji picker for engaging notifications
+- Built-in emoji picker for engaging notifications 🚀
 - Multiple animation styles (rotating and scrolling messages)
 - Customizable animation speed
 - Variable system for dynamic content (site name, current page title, etc.)
@@ -62,6 +62,9 @@ To translate the messages via WPML:
 
 
 == Changelog ==
+
+= 1.2.1 =
+* Improved check if WooCommerce is active
 
 = 1.2.0 =
 * Added documentation link

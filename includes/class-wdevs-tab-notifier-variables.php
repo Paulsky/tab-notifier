@@ -98,8 +98,7 @@ class Wdevs_Tab_Notifier_Variables {
 	private static function is_woocommerce_active() {
 		$plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
 
-		return in_array( $plugin_path, wp_get_active_and_valid_plugins() )
-		       || in_array( $plugin_path, wp_get_active_network_plugins() );
+		return in_array( $plugin_path, wp_get_active_and_valid_plugins());
 	}
 
 	/**

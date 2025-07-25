@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to the Tab Return Notifier plugin will be documented in this file.
 
+## [1.2.1] - 2025-07-25
+### Updated
+- Improved check if WooCommerce is active
+
 ## [1.2.0] - 2025-07-15
 ### Added
 - Documentation link
