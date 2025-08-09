@@ -76,6 +76,20 @@ class Wdevs_Tab_Notifier_Variables {
 	 * @since    1.0.0
 	 */
 	protected static function get_post_title() {
+		if ( is_singular() ) {
+			return html_entity_decode( get_the_title() ) ?: null;
+		} elseif ( is_category() || is_tag() || is_tax() ) {
+			$queried_object = get_queried_object();
+			if ( $queried_object instanceof WP_Term ) {
+				return html_entity_decode( $queried_object->name ) ?: null;
+			}
+		} elseif ( is_post_type_archive() ) {
+			$queried_object = get_queried_object();
+			if ( $queried_object && isset( $queried_object->labels->name ) ) {
+				return html_entity_decode( $queried_object->labels->name ) ?: null;
+			}
+		}
+
 		return html_entity_decode( get_the_title() ) ?: null;
 	}
 
