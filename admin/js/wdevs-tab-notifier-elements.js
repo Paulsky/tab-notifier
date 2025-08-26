@@ -11,6 +11,9 @@ import 'emoji-picker-element';
 			emojiPickerSelector: 'emoji-picker',
 		},
 
+		lastEditable: null,
+		lastRange: null,
+
 		init: function ( options ) {
 			this.settings.variables = this.getVariables();
 			this.settings = $.extend( {}, this.settings, options );
@@ -139,6 +142,12 @@ import 'emoji-picker-element';
 			const selection = window.getSelection();
 			if ( selection.rangeCount > 0 ) {
 				this.lastRange = selection.getRangeAt( 0 ).cloneRange();
+				const editable = $( selection.anchorNode ).closest(
+					'.wdtano-editable-input'
+				);
+				if ( editable.length ) {
+					this.lastEditable = editable[ 0 ];
+				}
 			}
 		},
 
@@ -164,6 +173,15 @@ import 'emoji-picker-element';
 		},
 
 		handleEmojiSelection: function ( e ) {
+			e.stopPropagation();
+			if ( typeof e.stopImmediatePropagation === 'function' ) {
+				e.stopImmediatePropagation();
+			}
+
+			if ( this.lastEditable ) {
+				this.lastEditable.focus();
+			}
+
 			this.insertEmoji( e.detail.unicode );
 			this.hideEmojiPicker();
 		},

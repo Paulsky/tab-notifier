@@ -3,7 +3,7 @@ Contributors: wijnbergdevelopments
 Tags: browser tab, notifications, user engagement
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,9 @@ To translate the messages via WPML:
 
 == Changelog ==
 
+= 1.2.3 =
+* Improved emoji selection
+
 = 1.2.2 =
 * Fixed a bug where the {{post_title}} variable was not correctly handled on taxonomy and archive page
 
@@ -81,7 +84,7 @@ To translate the messages via WPML:
 
 == Additional Information ==
 
-This plugin is fully open source. You can find the source code here: https://github.com/Paulsky/tab-notifier
+This plugin is fully open source. You can find the source code on [GitHub](https://github.com/Paulsky/tab-notifier)
 
 For more information and other WordPress plugins, visit [Wijnberg Developments](https://products.wijnberg.dev/product-category/wordpress/plugins/).
 

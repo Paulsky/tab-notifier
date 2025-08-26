@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to the Tab Return Notifier plugin will be documented in this file.
 
+## [1.2.3] - 2025-08-26
+### Updated
+- Improved emoji selection
+
 ## [1.2.2] - 2025-08-09
 ### Updated
 - Fixed a bug where the {{post_title}} variable was not correctly handled on taxonomy and archive page
