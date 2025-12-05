@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to the Tab Return Notifier plugin will be documented in this file.
 
+## [1.2.4] - 2025-12-05
+### Updated
+- Tested WordPress 6.9
+
 ## [1.2.3] - 2025-08-26
 ### Updated
 - Improved emoji selection

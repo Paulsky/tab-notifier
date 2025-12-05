@@ -16,14 +16,14 @@
  * Plugin Name:       Tab Return Notifier
  * Plugin URI:        https://products.wijnberg.dev
  * Description:       Bring visitors back to your site with animated tab notifications triggered when they switch to another browser tab.
- * Version:           1.2.3
+ * Version:           1.2.4
  * Author:            Wijnberg Developments
  * Author URI:        https://wijnberg.dev/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       tab-return-notifier
  * Domain Path:       /languages
- * Tested up to:      6.8
+ * Tested up to:      6.9
  * Requires PHP:      7.4
  * Requires at least: 5.0
  */
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.2.3' );
+define( 'WDEVS_TAB_NOTIFIER_VERSION', '1.2.4' );
 
 /**
  * The code that runs during plugin activation.
