@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to the Tab Return Notifier plugin will be documented in this file.
 
+## [1.2.5] - 2026-05-23
+### Updated
+- Tested WordPress 7.0
+- Tested WooCommerce 10.7.0
+
 ## [1.2.4] - 2025-12-05
 ### Updated
 - Tested WordPress 6.9
